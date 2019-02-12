@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>北咸&#39;s Blog</title>
   <icon>https://www.gravatar.com/avatar/ef0d17ecf071d7c7318a42df36c1c8a1</icon>
-  <subtitle>There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</subtitle>
+  <subtitle>There is an Artificial Idiot...</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.southe3n.cf/"/>
@@ -37,9 +37,9 @@
       <category term="Codeforces" scheme="http://blog.southe3n.cf/categories/Codeforces/"/>
     
     
-      <category term="DP" scheme="http://blog.southe3n.cf/tags/DP/"/>
-    
       <category term="贪心" scheme="http://blog.southe3n.cf/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="DP" scheme="http://blog.southe3n.cf/tags/DP/"/>
     
   </entry>
   
