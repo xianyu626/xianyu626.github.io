@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/07/05/usaco07decguanguangnainiu/">
+    
+    
+    <title>[USACO07DEC]观光奶牛 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="图论,二分答案">
+    <meta name="description" content="关键词：二分答案  判负环 相关题目：$Luogu2868$">
+<meta name="keywords" content="图论,二分答案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[USACO07DEC]观光奶牛">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="关键词：二分答案  判负环 相关题目：$Luogu2868$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-19T12:58:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[USACO07DEC]观光奶牛">
+<meta name="twitter:description" content="关键词：二分答案  判负环 相关题目：$Luogu2868$">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[USACO07DEC]观光奶牛</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[USACO07DEC]观光奶牛</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-05T10:34:57.000Z" itemprop="datePublished" class="page-time">
+  2018-07-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#N句话题意"><span class="post-toc-text">-N句话题意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思路"><span class="post-toc-text">-主要思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-USACO07DEC-观光奶牛"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[USACO07DEC]观光奶牛</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-05 18:34:57" datetime="2018-07-05T10:34:57.000Z"  itemprop="datePublished">2018-07-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+关键词：二分答案  判负环<br>
+相关题目：<a href="https://www.luogu.org/problemnew/show/P2868" target="_blank" rel="noopener">$Luogu2868$</a>
+</div>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="N句话题意"><a href="#N句话题意" class="headerlink" title="-N句话题意"></a><strong>-N句话题意</strong></h4><blockquote>
+<p><del>懒得概括，直接拉题面。。</del>还是不偷懒了</p>
+</blockquote>
+<p>给出一张$L(L\leq 1000)$个点，$P(P\leq 5000)$条边的有向图<br>有点权和边权，要求找出一个环，使其 <strong>点权和/边权和</strong> 值最大</p>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="-主要思路"></a><strong>-主要思路</strong></h4><p>Emmmm我们设一个环的点权和为$sum(f[v])$,边权和$sum(t[e])$<br>答案$ans=max(sum(f[v])/sum(t[e]))$<br>移一下项 得$sum(ans·t[e])-sum(f[v])=0$<br>那么我们就可以对这个$ans$进行<strong>二分</strong>了<br>对于每一个$mid$建立一张<strong>新图</strong>，每条边的值$t_{new}[i]=t[i]·mid-f[to[i]]$<br>以每一个点为起点跑一遍$dfs$-$SPFA$判断有没有<strong>负环</strong>就可以了<br>如果有负环，那么当前$mid$就是可以达到的，$l=mid$<br>反之$r=mid$</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,to[<span class="number">5100</span>],nxt[<span class="number">5100</span>],head[<span class="number">1100</span>],w[<span class="number">5100</span>];</span><br><span class="line"><span class="keyword">int</span> val[<span class="number">1100</span>],vis[<span class="number">1100</span>],cnt;</span><br><span class="line"><span class="keyword">double</span> wa[<span class="number">5100</span>],dis[<span class="number">1100</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;   </span><br><span class="line">    vis[u]=<span class="number">1</span>;       </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i]) &#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(dis[v]&gt;dis[u]+wa[i]) &#123;</span><br><span class="line">            dis[v]=dis[u]+wa[i];</span><br><span class="line">            <span class="keyword">if</span>(vis[v]||spfa(v)) &#123;vis[u]=<span class="number">0</span>;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[u]=<span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v;</span><br><span class="line">    nxt[cnt]=head[u];</span><br><span class="line">    w[cnt]=val;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y,z;i&lt;=m;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z),add(x,y,z);</span><br><span class="line">    <span class="keyword">double</span> l=<span class="number">0</span>,r=<span class="number">100007</span>,mid;</span><br><span class="line">    <span class="keyword">while</span>(r-l&gt;<span class="number">0.000001</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> flg=<span class="number">0</span>;</span><br><span class="line">        mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) wa[i]=w[i]*mid-val[to[i]]; <span class="comment">//建新图</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">if</span>(spfa(i)) &#123;l=mid; flg=<span class="number">1</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(!flg) r=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>,l);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-19T12:58:02.000Z" itemprop="dateUpdated">2018-10-19 20:58:02</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分答案/">二分答案</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&title=《[USACO07DEC]观光奶牛》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&title=《[USACO07DEC]观光奶牛》 — 北咸's Blog&source=
+
+关键词：二分答案  判负环
+相关题目：$Luogu2868$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[USACO07DEC]观光奶牛》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/08/noipshilianced2t3zuijingonggongzuxian/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[NOIP十连测D2T3]最近公共祖先</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/28/2018hunanshengduijixuncircular/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[2018湖南省队集训]circular</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&title=《[USACO07DEC]观光奶牛》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&title=《[USACO07DEC]观光奶牛》 — 北咸's Blog&source=
+
+关键词：二分答案  判负环
+相关题目：$Luogu2868$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[USACO07DEC]观光奶牛》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/05/usaco07decguanguangnainiu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACO0lEQVR42u3ay27CQBBEUf7/p4mULbF9q8ag0HO9Qo5w5njR9OvxwNfz93r9fH7n9T55MvlWecmQIeNrGc/Tix/96CjdK+BnkyFDxj4MHgovHgde0Dn4nH14X4YMGTIwiYRsHpRlyJAhowu4JJjyw6WppAwZMnZm8DQu5a0XvTfX4jJkyPhCxspg4N2fPzTfkCFDxj9mdOUob6Wlo9DyVDJkyBjNuGs82Q0M0tTwIhzLkCFjKIMkYV3RyNtw/DWhvFWGDBmjGWnb6zxYpykjP/RFUihDhoxxDJIapgODdJGChGPUmJMhQ8ZQBi8+u9KU5288bQ26hjJkyBjBIIGv7OG9ocV28d9lyJAxlJE++oZS86Yh6B+/GzJkyBjN6MaHvBwtD8dDvwwZMjZgkBBJ/tqNM29Y+5AhQ8YGDL4YwUvNbpGCDwkOq3AZMmSMY/A5Z7qE0YXslZcoQ4aMqYyuvOzCIj9i/EwZMmRsxkgXL8haGBlt8rHlxV6bDBkyxjHuWolYZ6RBVoYMGfswujUvnvalYbQbEsiQIWMHRhdAeaOftO3SBhyaxMqQIWMEozsQx/NEsEslHyvvVYYMGV/CeIbXenq3FFLPfzdkyJAxlMGvrtHPFylWFtFkyJCxA4MHWR4007Eob9UFX5MhQ8Y4RtdvT48eR/puwUKGDBkbM9JB410BF+2MyJAhQ0Z43G5Rg5e7hyNMGTJkjGZ0YS5dxUjTx+BlyZAhYzSjKyD56li6rpEOMmXIkDGa8QOB/WC+Sls0lgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

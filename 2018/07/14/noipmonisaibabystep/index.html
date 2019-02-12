@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/07/14/noipmonisaibabystep/">
+    
+    
+    <title>NOIP模拟赛 Babystep | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="图论,并查集">
+    <meta name="description" content="关键词：网格图  并查集  对偶图">
+<meta name="keywords" content="图论,并查集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOIP模拟赛 Babystep">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="关键词：网格图  并查集  对偶图">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/14/PMJWeH.png">
+<meta property="og:updated_time" content="2018-10-19T12:57:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NOIP模拟赛 Babystep">
+<meta name="twitter:description" content="关键词：网格图  并查集  对偶图">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/14/PMJWeH.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">NOIP模拟赛 Babystep</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">NOIP模拟赛 Babystep</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-14T11:03:47.000Z" itemprop="datePublished" class="page-time">
+  2018-07-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/模拟赛/">模拟赛</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一句话题意"><span class="post-toc-text">-一句话题意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输入格式"><span class="post-toc-text">-输入格式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思路"><span class="post-toc-text">-主要思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-NOIP模拟赛-Babystep"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">NOIP模拟赛 Babystep</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-14 19:03:47" datetime="2018-07-14T11:03:47.000Z"  itemprop="datePublished">2018-07-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/模拟赛/">模拟赛</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+关键词：网格图  并查集  对偶图 
+</div>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="-一句话题意"></a><strong>-一句话题意</strong></h4><p>给出一个 $R\times R$ 的网格图$(R\leq 500)$ </p>
+<p>进行$N(N\leq 2R^2-2R)$ 次操作</p>
+<p>Baby 偶尔会炸掉网格图中的一条边 $(u, v)$。之后他会尝试从 $u$ 走到 $v$。 </p>
+<p>如果他成功地从 $u$ 走到  $v$，他会很高兴；否则他会找人打架。 从第二次爆炸开始，根据 Baby 此时心情的不同，Baby 会炸掉不同的边。 你被要求编写一个程序，对于每次爆炸，给出此时 Baby 是否还能从 $u $ 到 $v$。 </p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="-输入格式"></a><strong>-输入格式</strong></h4><p>第一行，一个整数 $R$，代表网格图是 $R\times R$ 的。</p>
+<p> 第二行，一个整数 $N$，代表操作数。 </p>
+<p>第三行，四个整数 $x1,y1,x2,y2$，描述了第一次爆炸的边。 </p>
+<p>以下 $N-1$ 行，每行四个整数 $x1,y1,x2,y2,x1’,y1’,x2’,y2’$，<br>分别描述 Baby 高兴时炸的边和 想找人打架时炸的边。 </p>
+<h4 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h4><pre>
+2 
+2 
+1 1 1 2
+1 1 2 1 1 2 2 2 
+</pre>
+
+<h4 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h4><pre>
+HAHA 
+DAJIA 
+</pre>
+
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="-主要思路"></a><strong>-主要思路</strong></h4><p>首先要清楚什么是网格图<del>（其实是因为我本来并不知道。。。）</del><br>说白了就是点呈矩形，每个点向上下左右各点连边的一个图<del>及其不严谨</del><br>接下来我们定义各边所围成的区域为<strong>域</strong>  （如下图就是一个网格图，中间的大数字表示的就是域的编号，要注意<strong>整个网格图外</strong>也是一个域）<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s1.ax1x.com/2018/07/14/PMJWeH.png" alt="PMJWeH.png" title="">
+                </div>
+                <div class="image-caption">PMJWeH.png</div>
+            </figure></p>
+<p>对于这道题，由于是强制在线的，我们如果要用<strong>并查集</strong>维护连通性就必须要把原本的删边转化为连边<br>我们可以发现如果一条边两侧的域是连通的，再删边之后，边两端的点就不再连通了<br>那么就可以在每次操作时，判断边两侧的域是否连通，若连通，则输出”DAJIA”<br>否则将两个域连通，输出”HAHA”   <strong>这个连通性可以用并查集维护</strong></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,R,fa[<span class="number">260000</span>],id[<span class="number">510</span>][<span class="number">510</span>],last,cnt,x[<span class="number">2</span>],xx[<span class="number">2</span>],y[<span class="number">2</span>],yy[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:fa[x]=getf(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(getf(x)==getf(y)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> fa[fa[x]]=fa[y],<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;R,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;R;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;R;j++)</span><br><span class="line">            id[i][j]=++cnt, fa[cnt]=cnt;</span><br><span class="line">    fa[++cnt]=cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;x[<span class="number">0</span>],&amp;y[<span class="number">0</span>],&amp;xx[<span class="number">0</span>],&amp;yy[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;x[<span class="number">1</span>],&amp;y[<span class="number">1</span>],&amp;xx[<span class="number">1</span>],&amp;yy[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">if</span>(x[last]==xx[last]) tmp=min(y[last],yy[last]),</span><br><span class="line">            last=merge(x[last]==<span class="number">1</span>?cnt:id[x[last]<span class="number">-1</span>][tmp],x[last]==R?cnt:id[x[last]][tmp]);</span><br><span class="line">        <span class="keyword">else</span> tmp=min(x[last], xx[last]), </span><br><span class="line">            last=merge(y[last]==<span class="number">1</span>?cnt:id[tmp][y[last]<span class="number">-1</span>],y[last]==R?cnt:id[tmp][y[last]]);</span><br><span class="line">        <span class="built_in">puts</span>(last?<span class="string">"DAJIA"</span>:<span class="string">"HAHA"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-19T12:57:49.000Z" itemprop="dateUpdated">2018-10-19 20:57:49</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并查集/">并查集</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&title=《NOIP模拟赛 Babystep》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&title=《NOIP模拟赛 Babystep》 — 北咸's Blog&source=
+
+关键词：网格图  并查集  对偶图 
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NOIP模拟赛 Babystep》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/17/xuexijihuawangluoliu24ti/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习计划】网络流24题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/09/noipshilianced8t1shenyanhuang/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">NOIP十连测D8T1-神炎皇</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&title=《NOIP模拟赛 Babystep》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&title=《NOIP模拟赛 Babystep》 — 北咸's Blog&source=
+
+关键词：网格图  并查集  对偶图 
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NOIP模拟赛 Babystep》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/14/noipmonisaibabystep/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3ay26DMBAF0Pz/T1Opq1Zq4M5M0hb7eIUSMBwvLM/j8YjH8Tmq119HPvP5/aOBgYFxW8ZxOpJPPL+/+tHVd2FgYOzDyF9Z3UyT5Ujuv/hmDAwMjCfbYjJyQPJeDAwMjHzDTUi9wBUDAwNjEsT2tuY8MfdLsTgGBsYNGe8rDMyv/0V9AwMD408ZR3H0ttrzN/a+5NsMGBgYSzPOU2lJ6Ng7tPWOhheLhYGBsTQjKSiewxJe9almoxgGBsZyjN7G2ish9H6JFg4DA2MbRjW8nASok2LD01gcAwNjUcar2sImqbc8uMXAwNiTUW3zytem10JRDacxMDD2YeTb6yRkzY+S5SIEBgbGlow8iT9/tjrbDzNjYGBswxil5t9cCr24HwMDY2nGKBEfJ8iqJcxJMRUDA2NPRv7LvO2sFzxjYGDsxshHXmjspdvyhcDAwFibUd3Oeim2ajNZdSPGwMBYm5G3PuSpsd6RsRroYmBg7MOYH8vy9q9e8i4KmzEwMDZg5Ee9vI3sVSFudGzFwMBYmpEn6Kup/HwTn5cWMDAw1mb0igH5R0xawQr/YmBgLM2YJ8WqZYBkIaohMQYGxg6MvKkima6ZMiuGzdFjGBgYyzGqxcV8CeZlTgwMDIzqES2ZIS9bTpJ6GBgYGPnhb9608YJtHQMDYwNGNYnWazydlA0ulgwDA2NpxiSAzEuM1e07mW1U38DAwLgH4wP/itE/RgEDtAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

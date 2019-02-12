@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/noip2018-preparation/10.25.html">
+    
+    
+    <title>NOIP模拟赛 10.25 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="倍增,数学期望,图论">
+    <meta name="description" content="这场三题接近爆零…好惨啊，考虑单独开一篇。">
+<meta name="keywords" content="倍增,数学期望,图论">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NOIP模拟赛 10.25">
+<meta property="og:url" content="http://blog.southe3n.cf/noip2018-preparation/10.25.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="这场三题接近爆零…好惨啊，考虑单独开一篇。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.southe3n.cf/img/circle.png">
+<meta property="og:image" content="http://blog.southe3n.cf/img/gift.jpg">
+<meta property="og:updated_time" content="2018-11-02T07:19:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NOIP模拟赛 10.25">
+<meta name="twitter:description" content="这场三题接近爆零…好惨啊，考虑单独开一篇。">
+<meta name="twitter:image" content="http://blog.southe3n.cf/img/circle.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">NOIP模拟赛 10.25</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header page-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">NOIP模拟赛 10.25</h1>
+        <h5 class="subtitle">
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    <article class="page-article fade" itemprop="blogPage">
+        <div class="post-content page-content" id="page-content" itemprop="pageContent">
+            <blockquote>
+<p>这场三题接近爆零…好惨啊，考虑单独开一篇。</p>
+</blockquote>
+<a id="more"></a>
+<div class="card">
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a><center>树</center></h2><center><span id="inline-blue">时间限制：0.5s</span><span id="inline-yellow">空间限制：128MB</span></center>
+
+<p><strong>Description</strong></p>
+<p>$cwystc$ 是天才学院最优秀的学生。在成功 AK $NOI2018$ 之 后，$cwystc$ 开始思考他智商为什么这么高，他翻出了族谱，开始探究生命的本源。</p>
+<p>家谱可以看做一棵以 $1$ 为根的树，第 $i$ 个人的智商为 $w_i$ 。 $cwystc$ 会进行 $q$ 次探究，对于第 $i$ 次探究，$cwystc$ 初始智商为 $c_i$ ，他将从第 $u_i$ 个人开始向 $1$ 方向探索，直到第 $v_i$ 个人。对于路径上某个人 $k$ ，若  $k$ 的智商严格高于 $cwystc$ 的智商，$cwystc$ 会努力学习以达到与 $k$ 相等的智商。 $cwystc$ 想知道对于每次探究，他需要努力学习多少次。</p>
+<p><strong>Input</strong></p>
+<p>第一行输入两个整数 $n , q$  ,表示节点数和询问数。  </p>
+<p>第二行输入 $n$ 个整数  ,表⽰第 $i$ 个点的智商。</p>
+<p>第三行至第 $n+1$ 行每行输入两个数  $x,y$  ,表示树上一条边。  </p>
+<p>第 $n+2$ 行至第 $n+q+1$ 行每行三个数 $u,v,c$  表示一次探究。（保证 $v$ 是 $u$ 的 祖 先）</p>
+<p><strong>Output</strong></p>
+<p>输出 $q$ 行,每行一个数表示探究过程中  $cwystc$ 需要努力学习的次数</p>
+<p><strong>Sample Input</strong></p>
+<pre>5 4
+3 5 1 2 4
+1 2
+1 3
+2 4
+3 5
+4 2 1
+4 2 2
+4 2 3
+5 1 5
+</pre>
+
+<p><strong>Sample Output</strong></p>
+<pre>2
+1
+1
+0
+</pre>
+
+<p><strong>数据范围</strong></p>
+<p>对于 $10\%$ 的数据: $n\le 1000$ </p>
+<p>对于另外 $30\%$ 的数据:家谱树为一条链  </p>
+<p>对于 $100\%$ 的数据: $n,q,w_i,c\le100000$ </p>
+<p><strong>Solution</strong></p>
+<p>这道题的实质时要求出一棵树上一条 $u$ 到 $v$ 的链上以 $c$ 为第一个数的<strong>单调上升序列</strong>的长度，且保证 $v$ 为 $u$ 的祖先</p>
+<p><strong>先用倍增维护出：$u$ 到 $root$ 的路径上第一个 $w_i$ 比 $val$ 大的点。</strong>这个可以通过倍增维护最大值， $log~ n$ 求出。然后利用这个，处理出每个点的祖先中第一个比其 $w_i$ 大的点 $fa_i$，由于每个点都有一个唯一的 $fa_i$（当然有的点 $fa_i=0$），这就构成了一颗新树。</p>
+<p>对于每一个询问，我们先求出链上第一个比 $c$ 大的点 $u$ ，再通过新树倍增求出 $u$ 到 $v$ 这条路径的长度就好了。</p>
+<p><strong>Code</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;</span><br><span class="line">    x=<span class="number">0</span>;<span class="keyword">int</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>,ch=getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5000</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,q,w[N],f[<span class="number">22</span>][N],maxf[<span class="number">22</span>][N],newf[<span class="number">22</span>][N],dep[N];</span><br><span class="line"><span class="keyword">int</span> to[N&lt;&lt;<span class="number">1</span>],nxt[N&lt;&lt;<span class="number">1</span>],head[N],cnt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;to[++cnt]=v,nxt[cnt]=head[u],head[u]=cnt;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> ff)</span></span>&#123;</span><br><span class="line">    f[<span class="number">0</span>][u]=ff;</span><br><span class="line">    maxf[<span class="number">0</span>][u]=w[u];</span><br><span class="line">    dep[u]=dep[ff]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])</span><br><span class="line">        <span class="keyword">if</span>(to[i]!=ff) dfs(to[i],u);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line"><span class="comment">//找到u到root这条链上第一个wi比val大的点</span></span><br><span class="line">    <span class="keyword">int</span> lv;</span><br><span class="line">    <span class="keyword">while</span>(w[u]&lt;=val)&#123;</span><br><span class="line">        lv=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(maxf[lv+<span class="number">1</span>][u]&lt;=val) lv++;</span><br><span class="line">        u=f[lv][u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//初始化倍增数组，并建立新树的倍增</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">20</span>;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            f[j][i]=f[j<span class="number">-1</span>][f[j<span class="number">-1</span>][i]];</span><br><span class="line">            maxf[j][i]=max(maxf[j<span class="number">-1</span>][i],maxf[j<span class="number">-1</span>][f[j<span class="number">-1</span>][i]]);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j,u;i&lt;=n;i++) </span><br><span class="line">        newf[<span class="number">0</span>][i]=getf(i,w[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">20</span>;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            newf[j][i]=newf[j<span class="number">-1</span>][newf[j<span class="number">-1</span>][i]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) read(w[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;n;i++)&#123;</span><br><span class="line">        read(x); read(y);</span><br><span class="line">        add(x,y); add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    maxf[<span class="number">0</span>][<span class="number">0</span>]=w[<span class="number">0</span>]=<span class="number">2e9</span>;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> u,v,c,i,ans;</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        read(u), read(v), read(c);</span><br><span class="line">        ans=<span class="number">0</span>;</span><br><span class="line">        u=getf(u,c);</span><br><span class="line">        <span class="keyword">if</span>(dep[u]&lt;dep[v])&#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">            <span class="keyword">if</span>(dep[newf[i][u]]&gt;=dep[v])</span><br><span class="line">                ans+=<span class="number">1</span>&lt;&lt;i, u=newf[i][u];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
+<div class="card">
+<h2 id="环"><a href="#环" class="headerlink" title="环"></a><center>环</center></h2><center><span id="inline-blue">时间限制：1s</span><span id="inline-yellow">空间限制：128MB</span></center>
+
+<p><strong>Description</strong></p>
+<p>$cwystc$ 是天才学院最优秀的学生。在成功保送之后，开始每天陪妹子散步。天才学院共有 $n$ 个景点，每两个景点之间有且仅有一条<strong>有向边</strong>相连，但是 $cwystc$ 只确定了其中的 $e$ 条边。</p>
+<p>妹子希望每天的路线都不相同，而且她还希望 $cwystc$ 能够送她回家 (即<strong>回到路径的起点</strong>) ，但是 $cwystc$ 很懒，他每天只希望走<strong>最短的路线</strong>。他想知道他能陪伴妹子的<strong>期望天数</strong>。</p>
+<p>如果天才学院中不存在满足的路线，那我们会认为 $cwystc$ 在该方案中陪伴妹子的天数为 $0$ 。</p>
+<p><strong>Input</strong></p>
+<p>第一行读入两个整数 $n,e$ 表示节点数及 $cwystc$ 已确定的有向边边数。</p>
+<p>接下来 $e$ 行，每行两个整数 $x,y$ 描述 $cwystc$ 确定的边。</p>
+<p><strong>Output</strong></p>
+<p>输出一个整数表示期望陪伴妹子的天数。</p>
+<p><strong>Sample Input</strong></p>
+<pre>4 2
+1 2
+1 3
+</pre>
+
+<p><strong>Sample Output</strong></p>
+<pre>750000006
+</pre>
+
+
+<p><strong>数据范围</strong></p>
+<p>对于 $30\%$ 的数据: $n\le 300$<br>对于另外 $20\%$ 的数据: $e=0$<br>对于另外 $20\%$ 的数据: $e=\frac{n\times n-1}{2}$<br>对于 $100\%$ 的数据: $n\le 100000,e\le 1000000$</p>
+<p><strong>Solution</strong></p>
+<p>首先这个图是一个<strong>竞赛图</strong>，关于竞赛图我们有一个结论：<strong>竞赛图要么无环，否则必有三元环</strong>。（这个可自行百度）所以问题就转化成了求<strong>三元环期望个数</strong>。</p>
+<p>考虑如果每条边都不确定（即两个方向概率相等），个数期望是多少：对于任意三个点，都有 $2^3$ 种连边可能，其中 $2$ 种会形成三元环，所以此时的个数期望就是 <strong>$ \frac{1}{4} · C^3_n$</strong> 。</p>
+<p> 接下来考虑每条确定的边会对答案造成什么影响，先考虑任意三个点会有哪些情况，如下图（这些贡献是在每三个点的组合贡献为 $\frac{1}{4}$ 的基础上）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\circle.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>冷静分析，发现若只有一条边确定，就没有影响，两条边确定根据其是否同向分两种情况，三条边确定时的贡献其实已经在两条边中被算过了，不需要再算，所以实际上我们只需要计算两条边的两种情况各有多少种就好了。</p>
+<p>该怎么计算？对每个点处理出其<strong>出度和入度</strong>记为 $x,y$ ，发现出点和入点中各任选一个点即可组成边异向的情况，出点或入点中任选两个点组成边同向的情况</p>
+<p>因此，<strong>每个点对答案的贡献为 $+\frac{xy}{4} - \frac{1}{4}C^2_x - \frac{1}{4}C^2_y $ </strong></p>
+<p><strong>Code</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>,ch=getchar();</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5000</span>,p=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> inv6=<span class="number">166666668</span> ,inv4=<span class="number">250000002</span> ,inv2=<span class="number">500000004</span> ;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,e;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> in[N],out[N],ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;e);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,u,v;i&lt;=e;i++)&#123;</span><br><span class="line">        out[read()]++;</span><br><span class="line">        in[read()]++;</span><br><span class="line">    &#125;</span><br><span class="line">    ans=<span class="number">1l</span>l*n*(n<span class="number">-1</span>)*(n<span class="number">-2</span>)%p*inv6%p*inv4%p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ans+=inv4*in[i]*out[i]%p;</span><br><span class="line">        ans-=(in[i]*(in[i]<span class="number">-1</span>)+out[i]*(out[i]<span class="number">-1</span>))*inv2%p*inv4%p;</span><br><span class="line">        <span class="keyword">if</span>(ans&gt;=p) ans-=p;</span><br><span class="line">        <span class="keyword">if</span>(ans&lt;<span class="number">0</span>) ans+=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
+<div class="card">
+<h2 id="礼物"><a href="#礼物" class="headerlink" title="礼物"></a><center>礼物</center></h2><center><span id="inline-blue">时间限制：2s</span><span id="inline-yellow">空间限制：512MB</span></center>
+
+<p><strong>Description</strong></p>
+<p>$cwystc$ 是天才学院最优秀的学生。在成为人生赢家之后，$cwystc$ 开始陪妹子逛商店。</p>
+<p>商店中总共 $n$ 个礼物，对于第 $n$ 个礼物，包含 $a_i$ 个红宝石和 $b_i$ 个绿宝石，$cwystc$ 和妹子想各买一个礼物，然后将其中的宝石串成一条链，$cwystc$ 想知道对于每一种购买方案的排放方案数的和。</p>
+<p>由于方案数过大，所以输出对 $1000,000,007$ 取模。</p>
+<p><strong>一句话题意：求 $\sum \limits_{i!=j} \binom{a_i+b_i+a_j+b_j}{a_i+a_j}$</strong></p>
+<p><strong>Input</strong></p>
+<p>第一行输入一个正整数 $n$ 。</p>
+<p>第二行到第 $n+1$ 行每行两个正整数 $a_i$ 和 $b_i$ 表示第 $i$ 个礼物中包含 $a_i$ 个红宝石和 $b_i$ 个绿宝石。</p>
+<p><strong>Output</strong></p>
+<p>输出一个整数表示方案数。</p>
+<p><strong>Sample Input</strong></p>
+<pre>3
+1 1
+1 1
+1 2
+</pre>
+
+<p><strong>Sample Output</strong></p>
+<pre>52
+</pre>
+
+<p><strong>数据范围</strong></p>
+<p>对于 $20\%$ 的数据: $n\le 5000, a_i,b_i\le 1000000$</p>
+<p>对于另外 $30\%$ 的数据: $a_i,b_i\le 4000$ </p>
+<p>对于另外 $20\%$ 的数据: $n\le 50000,\Sigma a_i+\Sigma b_i\le 2000000$</p>
+<p>对于 $100\%$ 的数据: $n\le 100000,\Sigma a_i+\Sigma b_i\le 20000000$</p>
+<p><strong>Solution</strong></p>
+<p>solution写的已经很详细了（我“都”看懂了？！）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\gift.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>Code</strong></p>
+<p><span id="inline-green">方法一</span><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">1000</span>, p=<span class="number">1e9</span>+<span class="number">7</span>, maxn=<span class="number">2e7</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%p;</span><br><span class="line">        x=<span class="number">1l</span>l*x*x%p;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">md</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;<span class="keyword">if</span>(x&gt;=p) x-=p;&#125;</span><br><span class="line"><span class="keyword">int</span> n,fac[maxn+<span class="number">10</span>],inv[maxn+<span class="number">10</span>],f[maxn*<span class="number">2</span>+<span class="number">10</span>],ans;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> <span class="number">1l</span>l*fac[y]*inv[x]%p*inv[y-x]%p;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxn;i++) fac[i]=<span class="number">1l</span>l*fac[i<span class="number">-1</span>]*i%p;</span><br><span class="line">    inv[maxn]=<span class="built_in">pow</span>(fac[maxn],p<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=maxn;i;i--) inv[i<span class="number">-1</span>]=<span class="number">1l</span>l*inv[i]*i%p;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,a,b;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=-a;j&lt;=b;j++) md(ans+=<span class="number">1l</span>l*f[maxn+j]*C(a+j,a+b)%p);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=-a;j&lt;=b;j++) md(f[maxn-j]+=C(a+j,a+b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans*<span class="number">2</span>%p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><span id="inline-green">方法二</span><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">1000</span>,p=<span class="number">1e9</span>+<span class="number">7</span>,maxn=<span class="number">2e7</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,ans,f[<span class="number">2</span>][maxn+<span class="number">1000</span>],fac[maxn+<span class="number">100</span>],inv[maxn+<span class="number">100</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> <span class="number">1l</span>l*fac[y]*inv[x]%p*inv[y-x]%p;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=<span class="number">1l</span>l*res*x%p;</span><br><span class="line">        x=<span class="number">1l</span>l*x*x%p;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">md</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;<span class="keyword">if</span>(x&gt;=p) x-=p;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=fac[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=maxn;i++) fac[i]=<span class="number">1l</span>l*fac[i<span class="number">-1</span>]*i%p;</span><br><span class="line">    inv[maxn]=fastpow(fac[maxn],p<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=maxn;i;i--) inv[i<span class="number">-1</span>]=<span class="number">1l</span>l*inv[i]*i%p;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y,xx,yy;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        md(ans+=p-C(x&lt;&lt;<span class="number">1</span>,x+y&lt;&lt;<span class="number">1</span>));</span><br><span class="line">        xx=-x+maxn/<span class="number">2</span>, yy=-y+maxn/<span class="number">2</span>;</span><br><span class="line">        x=xx,y=yy;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> T=<span class="number">0</span>;T&lt;=<span class="number">1</span>;T++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=x;j&lt;=maxn-y;j++)</span><br><span class="line">                md(f[T][j]+=C(j-x,maxn-x-y));</span><br><span class="line">            swap(x,y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=maxn;i++)</span><br><span class="line">        md(ans+=<span class="number">1l</span>l*f[<span class="number">0</span>][i]*f[<span class="number">1</span>][i]%p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</div>
+
+        </div>
+
+        
+
+        
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+    </article>
+    
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/noip2018-preparation/10.25.html&title=《NOIP模拟赛 10.25》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/noip2018-preparation/10.25.html&title=《NOIP模拟赛 10.25》 — 北咸's Blog&source=
+这场三题接近爆零…好惨啊，考虑单独开一篇。
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/noip2018-preparation/10.25.html" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NOIP模拟赛 10.25》 — 北咸's Blog&url=http://blog.southe3n.cf/noip2018-preparation/10.25.html&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/noip2018-preparation/10.25.html" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQY7CMAwFUO5/6Y40W6bwbbcjNXlZIWghrwtjx3694nX8rrN33l+/X//+6dldZ/desDAwMB7LOD6uhJF/Z359vjcMDIx9GJ+DbJV0x71f9oyBgYERh8Le5nI2BgYGxqRMzUvQz2wMDAyMSRGbH6VVA3dy/WW1OAYGxgMZ1cbAf76+sb+BgYHxEMYxWPlPJoF4sh8MDIy1GdXiMy9ie83IahIZbQsDA2MhxqTIzIcwkkO36rEdBgbGPow8tE2akVcNW5S7DRgYGI9lJEf8eRp3bclaKIMxMDA2YORflBS9vdGx5KE0Tw0xMDAWYkwGL/JytPqwknIXAwNjN0aSxiWp5CSkJqU1BgbGbozqV+eNzLx8TVLJQmcDAwNjUUbeXKyOa+Tlbm9OFQMDYwdGtUzNt3t3QtmM3xgYGI9i5OOn86nRZBPVB4GBgbEDozc8UQ3NzeP+fGFgYCzN6KVxk0GK8qF/tdzFwMBYmtEbRc0bkHkimH/6pZTFwMBYiNH7+fya3oFd86ANAwNjM8akEK1eWW0YYGBg7MaopmXVpsJk/Ksc7jEwMJZjHMU1GeqqHr0VAj0GBsbSjF6z86ris/qAqn8DGBgYKzHmhWs1xczbpc0eLAYGxqKMahjNE8f8YeXl6x93YWBgYMTjYpOxidGRHAYGBkZxRCxPBPMGJwYGBkbehpy/3yuey5kjBgbGQoyrWo+98D0voTEwMJZm/ABsJGC+rEbcxwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

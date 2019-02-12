@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/08/xuexibijishuzhuangshuzu/">
+    
+    
+    <title>【学习笔记】树状数组 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="高级数据结构">
+    <meta name="description" content="-概念与定义 树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值；经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值(如果加入多个辅助数组则可以实现区间修改与区间查询)。">
+<meta name="keywords" content="高级数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】树状数组">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="-概念与定义 树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值；经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值(如果加入多个辅助数组则可以实现区间修改与区间查询)。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/05/08/CdNYkD.png">
+<meta property="og:updated_time" content="2018-10-21T05:52:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】树状数组">
+<meta name="twitter:description" content="-概念与定义 树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值；经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值(如果加入多个辅助数组则可以实现区间修改与区间查询)。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/05/08/CdNYkD.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】树状数组</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】树状数组</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-08T09:55:55.000Z" itemprop="datePublished" class="page-time">
+  2018-05-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念与定义"><span class="post-toc-text">-概念与定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单点修改，区间查询"><span class="post-toc-text">-单点修改，区间查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区间修改，单点查询"><span class="post-toc-text">-区间修改，单点查询</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区间修改，区间查询"><span class="post-toc-text">-区间修改，区间查询</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】树状数组"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】树状数组</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-08 17:55:55" datetime="2018-05-08T09:55:55.000Z"  itemprop="datePublished">2018-05-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="概念与定义"><a href="#概念与定义" class="headerlink" title="-概念与定义"></a><strong>-概念与定义</strong></h4><blockquote>
+<p>树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值；经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值(如果加入多个辅助数组则可以实现区间修改与区间查询)。</p>
+</blockquote>
+<a id="more"></a>
+<p>由图例可知，设i的二进制最高位为第 k 位，c[i]记录的是 a[i-2<sup>k</sup>+1] 到 a[i] 的和<br>而这个 2<sup>k</sup> 可以通过 i&amp;-i 快速求出<br><img src="https://s1.ax1x.com/2018/05/08/CdNYkD.png" alt="此处输入图片的描述"></p>
+<h4 id="单点修改，区间查询"><a href="#单点修改，区间查询" class="headerlink" title="-单点修改，区间查询"></a><strong>-单点修改，区间查询</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a,c[<span class="number">500010</span>]= &#123;<span class="number">0</span>&#125;,n,m,f,x,y;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="keyword">return</span> x&amp;-x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;        <span class="comment">//查询1..k的和</span></span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k; i&gt;<span class="number">0</span>; i-=lowbit(i))</span><br><span class="line">        sum+=c[i];</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x)</span> </span>&#123;  <span class="comment">//将第k个数增加x</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k; i&lt;=n; i+=lowbit(i)) c[i]+=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">        add(i,a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;f,&amp;x,&amp;y);</span><br><span class="line">        <span class="keyword">if</span>(f==<span class="number">1</span>) add(x,y);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,getsum(y)-getsum(x<span class="number">-1</span>));</span><br><span class="line">        <span class="comment">//求第X-Y区间内数的和</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="区间修改，单点查询"><a href="#区间修改，单点查询" class="headerlink" title="-区间修改，单点查询"></a><strong>-区间修改，单点查询</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="keyword">return</span> x&amp;-x;&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> c[<span class="number">500010</span>];</span><br><span class="line"><span class="comment">//与原版不同，这里的C[i]记录的是A[i]-A[i-1]（A:原数组）</span></span><br><span class="line"><span class="keyword">int</span> n,m,q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">long</span> <span class="keyword">long</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k; i&lt;=n; i+=lowbit(i)) c[i]+=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k; i&gt;<span class="number">0</span>; i-=lowbit(i)) sum+=c[i];</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> last=<span class="number">0</span>,now;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;now);</span><br><span class="line">        add(i,now-last);    <span class="comment">//差分数组</span></span><br><span class="line">        last=now;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">        <span class="keyword">if</span> (q==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x,y;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%lld"</span>,&amp;x,&amp;y,&amp;k);</span><br><span class="line">            add(x,k);   <span class="comment">//区间修改时，c[x]加上k，c[y+1]减k即可</span></span><br><span class="line">            add(y+<span class="number">1</span>,-k);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,getsum(x));</span><br><span class="line">            <span class="comment">//a[i]=c[1]+c[2]+c[3]+...+c[i]</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="区间修改，区间查询"><a href="#区间修改，区间查询" class="headerlink" title="-区间修改，区间查询"></a><strong>-区间修改，区间查询</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">ll n,m,c1[<span class="number">100005</span>],c2[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    ll add1=y,add2=x*y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=x;i&lt;=n;i+=i&amp;-i)</span><br><span class="line">        c1[i]+=add1,c2[i]+=add2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    ll sum1=<span class="number">0</span>,sum2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=x;i&gt;<span class="number">0</span>;i-=i&amp;-i)</span><br><span class="line">        sum1+=c1[i],sum2+=c2[i];</span><br><span class="line">    <span class="keyword">return</span> sum1*(x+<span class="number">1</span>)-sum2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;x),add(i,x),add(i+<span class="number">1</span>,-x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> t,x,y,z;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">        <span class="keyword">if</span>(t==<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">            add(x,z),add(y+<span class="number">1</span>,-z);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,query(y)-query(x<span class="number">-1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T05:52:15.000Z" itemprop="dateUpdated">2018-10-21 13:52:15</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据结构/">高级数据结构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&title=《【学习笔记】树状数组》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&title=《【学习笔记】树状数组》 — 北咸's Blog&source=-概念与定义
+树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】树状数组》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/09/zjoi2013kdashuchaxun/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[ZJOI2013]K大数查询</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/08/xuexibijishulianpoufen/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【学习笔记】树链剖分</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&title=《【学习笔记】树状数组》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&title=《【学习笔记】树状数组》 — 北咸's Blog&source=-概念与定义
+树状数组(Binary Indexed Tree(B.I.T), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】树状数组》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/08/xuexibijishuzhuangshuzu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aQXLDMAwEQf//0/IDXJZmAepAcHRyJSWancMGIPj54Of6eWo//7fy71ufNx4ZMmRsy7huH7ItsukrfPjeZMiQcQ6DRGEaxLUY5d8rQ4YMGffL8XAkMPKWDBkyZHAG+XwPJhgZMmTIqDWx99FJWs3+sd2CXlyGDBkbMjqN5dufX5lvyJAhYytG7bC+1ojWBploVzJkyBjN4AFHSP1RAS/7ZMiQIYNfs+iwawdwqHqVIUPGIAY/dueBy9chwwAU2TJkyBjNSI/sSQimYc2va6AiUoYMGeMY/AtqLWscl2H5KEOGjBMYJOZ4IVjbbjps+LuaDBkyjmF0LliQmO4UiA/fJUOGjKGMtIDjW+wXhUHpKUOGjNEMftki3RABcwx6V4YMGUMZvCCrXQjjfyB++SNOaBkyZGzOSK9EpIdlpOklJSCKexkyZIxm8MBNw7FzjawY2TJkyBjH4MNLHri1wrFGlSFDxgkM/gVpubaquEQjARkyZBzJ4AGaXqdIfxv8G5AhQ8YxjHRpPoxMNxoPGGTIkHEYIy0Qa+PJzgoPpaEMGTIGMa7w6QwV0na3VdvKkCFjEKOf1qu2S0J58ZxWhgwZWzF4RNaOxkgT2z/hlyFDxgkM3nDWmttVpd5DnStDhgwZ+ApXJ6BrI1IZMmTISJtPvpV+0SlDhoxzGKuOxtJ1+qMIGTJknMCotY589JhugrxbHGTKkCFjP8YXQAJgvviGghAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

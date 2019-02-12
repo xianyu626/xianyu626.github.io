@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/06/23/xuexibijizhuxishu/">
+    
+    
+    <title>【学习笔记】主席树 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="主席树">
+    <meta name="description" content="洛谷P3834 【模板】可持久化线段树 1（主席树）-主要思想主席树比较经典的应用是求区间第$k$大即给定一个数列，查询某一区间中的第$k$大数  主席树的本质是多棵权值线段树，利用前缀和的思想来实现 由于形态完全相同的线段树若维护的信息是满足加减性(即合并信息时可以直接加减)的 那么这两棵线段树也能通过直接将对应结点的信息相互加减来合并或拆分 这样就可以将前缀和的思想应用到线段树上了">
+<meta name="keywords" content="主席树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】主席树">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="洛谷P3834 【模板】可持久化线段树 1（主席树）-主要思想主席树比较经典的应用是求区间第$k$大即给定一个数列，查询某一区间中的第$k$大数  主席树的本质是多棵权值线段树，利用前缀和的思想来实现 由于形态完全相同的线段树若维护的信息是满足加减性(即合并信息时可以直接加减)的 那么这两棵线段树也能通过直接将对应结点的信息相互加减来合并或拆分 这样就可以将前缀和的思想应用到线段树上了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/06/23/PpbHMV.png">
+<meta property="og:updated_time" content="2018-06-23T11:29:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】主席树">
+<meta name="twitter:description" content="洛谷P3834 【模板】可持久化线段树 1（主席树）-主要思想主席树比较经典的应用是求区间第$k$大即给定一个数列，查询某一区间中的第$k$大数  主席树的本质是多棵权值线段树，利用前缀和的思想来实现 由于形态完全相同的线段树若维护的信息是满足加减性(即合并信息时可以直接加减)的 那么这两棵线段树也能通过直接将对应结点的信息相互加减来合并或拆分 这样就可以将前缀和的思想应用到线段树上了">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/06/23/PpbHMV.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】主席树</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】主席树</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-23T02:14:46.000Z" itemprop="datePublished" class="page-time">
+  2018-06-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#洛谷P3834-【模板】可持久化线段树-1（主席树）"><span class="post-toc-text">洛谷P3834 【模板】可持久化线段树 1（主席树）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思想"><span class="post-toc-text">-主要思想</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现方法"><span class="post-toc-text">-实现方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】主席树"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】主席树</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-23 10:14:46" datetime="2018-06-23T02:14:46.000Z"  itemprop="datePublished">2018-06-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="洛谷P3834-【模板】可持久化线段树-1（主席树）"><a href="#洛谷P3834-【模板】可持久化线段树-1（主席树）" class="headerlink" title="洛谷P3834 【模板】可持久化线段树 1（主席树）"></a><a href="https://www.luogu.org/problemnew/show/P3834" target="_blank" rel="noopener">洛谷P3834 【模板】可持久化线段树 1（主席树）</a></h3><h4 id="主要思想"><a href="#主要思想" class="headerlink" title="-主要思想"></a><strong>-主要思想</strong></h4><p>主席树比较经典的应用是求<strong>区间第$k$大</strong><br>即给定一个数列，查询某一区间中的第$k$大数</p>
+<div class="note info">
+主席树的本质是多棵<strong>权值线段树</strong>，利用<strong>前缀和</strong>的思想来实现
+<br>由于形态完全相同的线段树若维护的信息是<strong>满足加减性(即合并信息时可以直接加减)</strong>的
+<br>那么这两棵线段树也能通过直接将对应结点的信息相互加减来<strong>合并或拆分</strong>
+<br>这样就可以将前缀和的思想应用到线段树上了
+</div>
+
+<a id="more"></a>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="-实现方法"></a><strong>-实现方法</strong></h4><p>我们对<strong>每一个$1..i$的区间</strong>建立一棵<strong>权值线段树</strong><br>对于每一个区间$[l,r]$查询，代表这个区间的权值线段树就是<strong>线段树$[r]$-线段树$[l-1]$</strong><br>对这个线段树进行二分答案，判断排名是否$=k$,就可以得到答案了</p>
+<blockquote>
+<p>至于具体的权值线段树实现方法，这里就不写了。（<del>其实是我懒</del>）<br>如果不知道可以先去学一下,主要是将普通线段树维护的区间变为<strong>权值区间</strong></p>
+</blockquote>
+<p>等一蛤，似乎这样建权值线段树的空间复杂度是$O(4N^2)$？？这不是铁定爆了嘛<br>好，让我们冷静分析一下,似乎区间$[1..i]$和$[1..i-1]$的线段树只有一条$\log N$的链是不同的？<br>因为两个区间相比只多了一个权值为$val[i]$的数，所以<strong>只有包含$val[i]$的权值区间是不一样的</strong></p>
+<div class="note success">
+我们运用**可持久化思想**，通过动态开点的方法，对于当前区间的左右孩子,
+<br>若新增的一个权值<strong>不属于其权值区间</strong>，则直接<strong>指向到上一棵线段树的相同位置</strong> 
+<br>对于需要修改的一条链，用动态开点新开一条链就可以了
+</div>
+具体形态会长成这样子
+
+<img src="https://s1.ax1x.com/2018/06/23/PpbHMV.png" alt="1">
+
+那么我们就可以在$O(N\log N)$的时间内解决这个问题了
+
+<div class="note warning">
+需要注意的是，若数据的值域很大，由于使用的是权值线段树，复杂度会很高
+<br>这时候我们就需要将数据离散化一下，将值域降为$N$
+</div>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> maxa=<span class="number">-2e9</span>,mina=<span class="number">2e9</span>;</span><br><span class="line"><span class="keyword">int</span> root[<span class="number">210000</span>],lson[<span class="number">21000000</span>],rson[<span class="number">21000000</span>],size[<span class="number">21000000</span>];</span><br><span class="line"><span class="keyword">int</span> cnt,n,m,x[<span class="number">210000</span>],y[<span class="number">210000</span>],tot;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span><span class="keyword">int</span> val,id;&#125;a[<span class="number">210000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(node x,node y)</span></span>&#123;<span class="keyword">return</span> x.val&lt;y.val;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> &amp;u,<span class="keyword">int</span> pre,<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    u=++cnt;                                <span class="comment">//动态开点，u使用实参 </span></span><br><span class="line">    size[u]=size[pre]+<span class="number">1</span>;</span><br><span class="line">    lson[u]=lson[pre],rson[u]=rson[pre];    <span class="comment">//继承上一时刻的区间信息 </span></span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=mid) ins(lson[u],lson[pre],k,l,mid); <span class="comment">//只需要修改logn的区间信息 </span></span><br><span class="line">        <span class="keyword">else</span> ins(rson[u],rson[pre],k,mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> ul,<span class="keyword">int</span> ur,<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</span><br><span class="line">    <span class="keyword">int</span> lsize=size[lson[ur]]-size[lson[ul]],mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(lsize&gt;=k) <span class="keyword">return</span> query(lson[ul],lson[ur],k,l,mid);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> query(rson[ul],rson[ur],k-lsize,mid+<span class="number">1</span>,r); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i].val),a[i].id=i;</span><br><span class="line">    sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>,cmp);        <span class="comment">//离散化，使权值线段树的值域降到n </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i].val==a[i<span class="number">-1</span>].val&amp;&amp;a[i].val!=<span class="number">0</span>) x[a[i].id]=tot;</span><br><span class="line">            <span class="keyword">else</span> x[a[i].id]=++tot;</span><br><span class="line">        y[tot]=a[i].val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        ins(root[i],root[i<span class="number">-1</span>],x[i],<span class="number">1</span>,tot);  </span><br><span class="line">    <span class="comment">//每插入一个数，都只需要记录一条logn的链，其余的都与时刻i-1的线段树相同，直接使用即可 </span></span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,r,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;l,&amp;r,&amp;k);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,y[query(root[l<span class="number">-1</span>],root[r],k,<span class="number">1</span>,tot)]); </span><br><span class="line">        <span class="comment">//r时刻的线段树减去l-1时刻的线段树即是区间l~r的线段树 </span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-23T11:29:07.000Z" itemprop="dateUpdated">2018-06-23 19:29:07</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&title=《【学习笔记】主席树》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&title=《【学习笔记】主席树》 — 北咸's Blog&source=洛谷P3834 【模板】可持久化线段树 1（主席树）-主要思想主席树比较经典的应用是求区间第$k$大即给定一个数列，查询某一区间中的第$k$大数
+
+主席树..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】主席树》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/23/xuexibijidaixiuzhuxishu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】带修主席树</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/21/ahoi2009zhongguoxiangqi/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[AHOI2009]中国象棋</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&title=《【学习笔记】主席树》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&title=《【学习笔记】主席树》 — 北咸's Blog&source=洛谷P3834 【模板】可持久化线段树 1（主席树）-主要思想主席树比较经典的应用是求区间第$k$大即给定一个数列，查询某一区间中的第$k$大数
+
+主席树..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】主席树》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/23/xuexibijizhuxishu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQY7DQAgFUd//0p4DRG7Xb5xoDOVVNEmGflkgGjgO/Jwfz9W7V39Z/0/+rdIjQ4aM1zLO5bMOuT4Wj0Lirn9KGTJkTGBcBb56TcJzHol7c2YZMmTIWDLS5Ei+K0OGDBnfY/CUuleAypAhYzIjLfV4yfibJC5DhozeDN51//3rr8w3ZMiQ8SpGvVmfFny8DA1OJUOGjNYMnuB4cZYWeXwIevNJGTJkNGXUCziC4e/y5P5w3SpDhox/zCDjgbS5zws+MgyIf0QZMmSMYTzb7k8beekPJEOGjJmM+B68lRxJio8TvQwZMpoySHGWXjv3rqB7QwUZMmT0ZlRSZJpG0+IyWFCTIUNGa0baaKsXhSQF7zXpZMiQMYGRFnmbdegWJriFy5Ahox2jshJRKQTTfYn4Fi5DhoxGDJJM6221CjuIKEOGjKYM0thKeenh0gvzQcLIkCGjKSNdg0iHASksWAiTIUNGawY/NE/HcXjMvokiQ4aMAYxKGt07ED9DsGwhQ4aM1oxKo20vNfPyESVxGTJkjGHwi+s6ZGVIwE8iQ4aMCYwzfEjTLV0y22vJ3ayuypAhoxEjTXNkRSxdyOBrZ5sDThkyZLRgkCSbXlz5YJIkbpRwZciQMYDBL5xpgGdLvfguLkOGjJGMNEy6NMZHFKWEK0OGjAEMMgYgsfhFF11iZciQ0ZrBm/XPhk+HoDJkyJjJ2EuUlZlDsOz17LqGDBky3sf4A24LIuD4/O8DAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

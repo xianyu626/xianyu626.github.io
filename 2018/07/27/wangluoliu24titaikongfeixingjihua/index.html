@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/07/27/wangluoliu24titaikongfeixingjihua/">
+    
+    
+    <title>【网络流24题】太空飞行计划 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="网络流">
+    <meta name="description" content="关键词：最大权闭合子图  最小割 相关题目：$Luogu2762$ $Loj6001$">
+<meta name="keywords" content="网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【网络流24题】太空飞行计划">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="关键词：最大权闭合子图  最小割 相关题目：$Luogu2762$ $Loj6001$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-21T05:49:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【网络流24题】太空飞行计划">
+<meta name="twitter:description" content="关键词：最大权闭合子图  最小割 相关题目：$Luogu2762$ $Loj6001$">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【网络流24题】太空飞行计划</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【网络流24题】太空飞行计划</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T07:35:49.000Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【网络流24题】太空飞行计划"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【网络流24题】太空飞行计划</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 15:35:49" datetime="2018-07-27T07:35:49.000Z"  itemprop="datePublished">2018-07-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+关键词：最大权闭合子图  最小割<br>
+相关题目：<a href="https://www.luogu.org/problemnew/show/P2762" target="_blank" rel="noopener">$Luogu2762$</a>
+<a href="hhttps://loj.ac/problem/6001" target="_blank" rel="noopener">$Loj6001$</a>
+</div>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>这道题是求一个<strong>最大权闭合子图</strong><br>然后可以转化为<strong>最小割</strong>问题，求一下<strong>最大流</strong>就可以了</p>
+<blockquote>
+<p>具体细节不谈</p>
+</blockquote>
+<p>比较麻烦的是如何<strong>求方案</strong><br><em>似乎有点难想</em><br>我们在残量网络中从源点沿着所有有残余容量的边遍历，<br>所有遍历到的点所代表的实验和器材都是要用到的</p>
+<p>为什么这么做呢？<br>首先所有源点的有残余容量的出边所指向的实验肯定是要做的，<br>这样就会遍历到这些实验要用到的器材，<br>然后这些器材的一部分费用可能会由没有遍历到的实验的盈利承担<br>这时就会从这些器材的反向边遍历到那些实验，<br>那些实验需要的器材又会被遍历到</p>
+<p>然后就如此反复反复咯，最后所有被遍历到的点都是需要的</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;</span><br><span class="line">    x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))&#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch)) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>, ch=getchar();</span><br><span class="line">    <span class="keyword">return</span> ch!=<span class="string">'\r'</span>&amp;&amp;ch!=<span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> to[<span class="number">1000</span>],nxt[<span class="number">1000</span>],head[<span class="number">200</span>],w[<span class="number">1000</span>],s,t,dep[<span class="number">200</span>],cunt[<span class="number">200</span>];</span><br><span class="line"><span class="keyword">int</span> cur[<span class="number">200</span>],sum,maxflow,x,n,m,cnt=<span class="number">1</span>,a[<span class="number">600</span>],vis[<span class="number">110</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v,w[cnt]=val,</span><br><span class="line">    nxt[cnt]=head[u],head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    add(u,v,val),add(v,u,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> maxflow)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u==t) <span class="keyword">return</span> maxflow;</span><br><span class="line">    <span class="keyword">int</span> flow=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=cur[u];i;i=nxt[i])&#123;</span><br><span class="line">        cur[u]=i;</span><br><span class="line">        <span class="keyword">if</span>(w[i]&amp;&amp;dep[to[i]]+<span class="number">1</span>==dep[u])&#123;</span><br><span class="line">            <span class="keyword">int</span> now=dfs(to[i],min(w[i],maxflow-flow));</span><br><span class="line">            flow+=now;</span><br><span class="line">            w[i]-=now;</span><br><span class="line">            w[i^<span class="number">1</span>]+=now;</span><br><span class="line">            <span class="keyword">if</span>(maxflow==flow) <span class="keyword">return</span> flow;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cur[u]=head[u];</span><br><span class="line">    <span class="keyword">if</span>(--cunt[dep[u]]==<span class="number">0</span>) dep[s]=n+m+<span class="number">2</span>;</span><br><span class="line">    cunt[++dep[u]]++;</span><br><span class="line">    <span class="keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])</span><br><span class="line">        <span class="keyword">if</span>(!vis[to[i]]&amp;&amp;w[i]) dfs(to[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read(n),read(m);</span><br><span class="line">    s=n+m+<span class="number">1</span>;</span><br><span class="line">    t=s+<span class="number">1</span>;cunt[<span class="number">0</span>]=t;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        read(x),link(s,i,x),sum+=x; </span><br><span class="line">        <span class="keyword">while</span>(read(x)) link(i,x+n,<span class="number">2e9</span>);</span><br><span class="line">        link(i,x+n,<span class="number">2e9</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        read(a[i]),link(i+n,t,a[i]);</span><br><span class="line">    <span class="keyword">while</span>(dep[s]&lt;n+m+<span class="number">2</span>) </span><br><span class="line">        maxflow+=dfs(s,<span class="number">2e9</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(vis[i]) <span class="built_in">printf</span>(<span class="string">"%d "</span>,&amp;i);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&lt;=n+m;i++)</span><br><span class="line">        <span class="keyword">if</span>(vis[i]) <span class="built_in">printf</span>(<span class="string">"%d "</span>,&amp;i-n);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum-maxflow);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T05:49:01.000Z" itemprop="dateUpdated">2018-10-21 13:49:01</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络流/">网络流</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&title=《【网络流24题】太空飞行计划》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&title=《【网络流24题】太空飞行计划》 — 北咸's Blog&source=
+
+关键词：最大权闭合子图  最小割
+相关题目：$Luogu2762$
+$Loj6001$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【网络流24题】太空飞行计划》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/11/2018shuqijixun726810/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2018暑期集训[7.26~8.10]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/25/noi2018guicheng/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[NOI2018]归程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&title=《【网络流24题】太空飞行计划》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&title=《【网络流24题】太空飞行计划》 — 北咸's Blog&source=
+
+关键词：最大权闭合子图  最小割
+相关题目：$Luogu2762$
+$Loj6001$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【网络流24题】太空飞行计划》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/27/wangluoliu24titaikongfeixingjihua/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aQW7jQAwEQP//09nrBlnZ3eTI8AalU+AokmoCaOgmH4/4+Prr+Pn51Zk//+r5Fdq/PXbg4eHhLR79+aWTh9swru7SXgEPDw/vPbzkcleXbl/x7eImy3f5OR4eHt4H8PKCe1brPj8fDw8P7zfxnj96csfnS4aHh4f3abw8Qs1f4kmosSmpD2cteHh4eF1GGpW/n/PzLf09PDw8vHVXPXlNb7aHNtSonxYPDw/vBt4sGtgsQVJeb2JiPDw8vLt5SWSwb+e3AwdJABFdEw8PD+8GXtK+SoKJfEuYndmOfxXdOTw8PLwFrw0dZi/0WUus3STw8PDw3sOLBpgWi1I80KIh98gZeHh4eId47caQF7ibsa1jYQQeHh7empcEtTk7b/znEUO7FUVdOzw8PLxDvH3jalYcb5b7xZl4eHh4N/DyU9txq83o1SZE/sf5eHh4eG/kzVpQOexUq+xFpIKHh4d3Ay9qIx16xbektvFWd/nw8PDwSt4swN0U4m1//3AxjYeHh3cDrxhmis9JNoPZrNQLJB4eHt4NvP1DtGV3Hs628UfRDMPDw8Nb82ZxQPL5bNAqKdCLLQoPDw/vKG/W9NqHv+1YQFLo10MDeHh4eAte/pU+b+e3AcdsK3qx6Hh4eHg38NoWVFvmJtvPfugq+kqAh4eHd5Q3G5zKy+h9pDtrkuHh4eG9h5cHrPmIVVtkt8tR9PTw8PDwjvL2g02bgngWQ0Tn4OHh4R3lfZXHi/GmUfCaL2J+328pNR4eHt5RXn4km0fe2p/FH1H0MDvw8PDwSl47epW/xNsX92ZDurw7Hh4e3m28U4Xv7KEfRw88PDy8/4u3b261vy2myfDw8PA+nteW4LMhhqgNhoeHh3cDbxYE5MX0LHFN/hnRxoCHh4d3lFd/vS+bW7PHemd4gYeHhxfz/gCqBVS5Cenf0AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

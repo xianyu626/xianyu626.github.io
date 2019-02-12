@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/01/xuexibijizuijingonggongzuxianlca/">
+    
+    
+    <title>【学习笔记】最近公共祖先(LCA) | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LCA，树剖">
+    <meta name="description" content="洛谷 P3379 【模板】最近公共祖先（LCA）-概念及定义 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定一个有根树T时，对于任意两个结点u、v，找到一个离根最远的结点x，使得x同时是u和v的祖先，x 便是u、v的最近公共祖先。">
+<meta name="keywords" content="LCA，树剖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】最近公共祖先(LCA)">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="洛谷 P3379 【模板】最近公共祖先（LCA）-概念及定义 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定一个有根树T时，对于任意两个结点u、v，找到一个离根最远的结点x，使得x同时是u和v的祖先，x 便是u、v的最近公共祖先。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/05/01/CJaILF.png">
+<meta property="og:updated_time" content="2018-10-21T05:52:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】最近公共祖先(LCA)">
+<meta name="twitter:description" content="洛谷 P3379 【模板】最近公共祖先（LCA）-概念及定义 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定一个有根树T时，对于任意两个结点u、v，找到一个离根最远的结点x，使得x同时是u和v的祖先，x 便是u、v的最近公共祖先。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/05/01/CJaILF.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】最近公共祖先(LCA)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】最近公共祖先(LCA)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-01T07:30:06.000Z" itemprop="datePublished" class="page-time">
+  2018-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#洛谷-P3379-【模板】最近公共祖先（LCA）"><span class="post-toc-text">洛谷 P3379 【模板】最近公共祖先（LCA）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念及定义"><span class="post-toc-text">-概念及定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#离线算法Tarjan"><span class="post-toc-text">-离线算法Tarjan</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在线算法-倍增"><span class="post-toc-text">-在线算法 倍增</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在线算法-树剖"><span class="post-toc-text">-在线算法 树剖</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】最近公共祖先(LCA)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】最近公共祖先(LCA)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-01 15:30:06" datetime="2018-05-01T07:30:06.000Z"  itemprop="datePublished">2018-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="洛谷-P3379-【模板】最近公共祖先（LCA）"><a href="#洛谷-P3379-【模板】最近公共祖先（LCA）" class="headerlink" title="洛谷 P3379 【模板】最近公共祖先（LCA）"></a>洛谷 P3379 【模板】最近公共祖先（LCA）</h3><h4 id="概念及定义"><a href="#概念及定义" class="headerlink" title="-概念及定义"></a><strong>-概念及定义</strong></h4><div class="note info"> 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定一个有根树T时，对于任意两个结点u、v，找到一个离根最远的结点x，使得x同时是u和v的祖先，x 便是u、v的最近公共祖先。</div>
+
+<a id="more"></a>
+<hr>
+<h4 id="离线算法Tarjan"><a href="#离线算法Tarjan" class="headerlink" title="-离线算法Tarjan"></a><strong>-离线算法Tarjan</strong></h4><p>利用并查集，我们可以实现LCA问题的O(n+q)算法(q:询问次数)。<br>Tarjan算法基于<strong>DFS</strong>，对于第一次搜索到的结点，先创建由这个结点构成的集合，再对该结点的每一个子树进行搜索，对于搜索完的子树，保证子树内的LCA询问都已解决。其他的LCA询问的结果必然在这个子树之外，这时把子树所形成的集合与该结点的集合合并，并<strong>将当前结点设为这个集合的祖先</strong>。<br>重复搜索子树的过程，直到当前结点的所有子树搜索完,将当前结点也设为已被搜索过的，查询所有和该结点有询问关系的结点 v，若 <strong>v 已被搜索过</strong>，由于进行的是深度优先搜索，所以这个最近公共祖先的包含 v 的子树一定已经搜索过了，那么这个最近公共祖先一定是 <strong>v 所在集合的祖先</strong>。</p>
+<p>tarjan部分伪代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Tarjan(u)//marge和find为并查集合并和查找操作</span><br><span class="line">&#123;</span><br><span class="line">    for each(u,v)&#123;    //访问所有u子节点v</span><br><span class="line">        Tarjan(v);        //继续往下遍历</span><br><span class="line">        marge(u,v);    //合并v到u上</span><br><span class="line">        标记v被访问过;</span><br><span class="line">    &#125;</span><br><span class="line">    for each(u,e)&#123;    //访问所有和u有询问关系的e</span><br><span class="line">        如果e被访问过：</span><br><span class="line">        u,e的最近公共祖先为find(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,s,fa[<span class="number">510000</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next,no;</span><br><span class="line">&#125; e[<span class="number">1110000</span>],q[<span class="number">1100000</span>];</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>,cntq=<span class="number">0</span>,head[<span class="number">510000</span>],headq[<span class="number">510000</span>],ans[<span class="number">510000</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">510000</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fa[x] == x ? x : fa[x] = getf(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    e[++cnt].to=v;</span><br><span class="line">    e[cnt].next=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_q</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    q[++cntq].to=v;</span><br><span class="line">    q[cntq].next=headq[u];</span><br><span class="line">    q[cntq].no=i;</span><br><span class="line">    headq[u]=cntq;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    vis[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=headq[u];i;i=q[i].next)</span><br><span class="line">        <span class="keyword">if</span>(vis[q[i].to])</span><br><span class="line">            ans[q[i].no]=getf(q[i].to);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=e[i].next)</span><br><span class="line">        <span class="keyword">if</span>(!vis[e[i].to]) tarjan(e[i].to,u);</span><br><span class="line">    fa[u]=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y; i&lt;=m; i++) &#123;<span class="comment">//读入查询关系并添加至邻接表中</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add_q(x,y,i),add_q(y,x,i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;</span><br><span class="line">    tarjan(s,s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="在线算法-倍增"><a href="#在线算法-倍增" class="headerlink" title="-在线算法 倍增"></a><strong>-在线算法 倍增</strong></h4><p>时间复杂度O(nlogn)<br>主要思想：每次将向上跳跃的层数<strong>折半</strong>，以达到求离根最远的公共祖先的目的，查找最近公共祖先时，先使两结点<strong>深度相同</strong>，再枚举跳跃层数，判断跳跃后是否处于同一结点，若是，则说明若跳该层数就会跳过最近公共祖先，将跳跃层数折半后继续尝试，直到两结点分处于同一结点的左右儿子，则该结点就是最近公共祖先</p>
+<p>预处理：通过dfs遍历，标记每个节点到根节点的深度deep[u]，DP求出树上每个节点u的第1&lt;&lt;层祖先f[u][i]</p>
+<p><img src="https://s1.ax1x.com/2018/05/01/CJaILF.png" alt="此处输入图片的描述"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,s;</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>,head[<span class="number">510000</span>],deep[<span class="number">510000</span>],f[<span class="number">510000</span>][<span class="number">20</span>],to[<span class="number">1100000</span>],nxt[<span class="number">1100000</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    to[++cnt]=v;</span><br><span class="line">    nxt[cnt]=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lca_pre</span><span class="params">()</span></span>&#123;     <span class="comment">//预处理出每个节点的向上第1&lt;&lt;i层的祖先</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">18</span>;i++)  </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>]; </span><br><span class="line">    <span class="comment">//先向上跳1&lt;&lt;(i-1)层，再向上跳到1&lt;&lt;i层 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;    <span class="comment">//标记深度，并将向上跳一层设为其父节点 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])</span><br><span class="line">        <span class="keyword">if</span>(!deep[to[i]])&#123;</span><br><span class="line">            deep[to[i]]=deep[u]+<span class="number">1</span>;</span><br><span class="line">            f[to[i]][<span class="number">0</span>]=u;</span><br><span class="line">            dfs(to[i]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(deep[u]&lt;deep[v]) swap(u,v);<span class="comment">//保证u比v深度大 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">17</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="keyword">if</span>(deep[f[u][i]]&gt;=deep[v])</span><br><span class="line">            u=f[u][i];</span><br><span class="line">    <span class="comment">//将两点跳至同一深度 </span></span><br><span class="line">    <span class="keyword">if</span>(u==v) <span class="keyword">return</span> v; <span class="comment">//若此时两点已相同，说明v是u的祖先 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">17</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="keyword">if</span>(f[u][i]!=f[v][i])</span><br><span class="line">            u=f[u][i],v=f[v][i];</span><br><span class="line">    <span class="comment">//两节点一起向上跳，直到处于他们公共祖先的左右儿子上 </span></span><br><span class="line">    <span class="keyword">return</span> f[u][<span class="number">0</span>]; <span class="comment">//返回两节点的上一层 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y; i&lt;n; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    deep[s]=<span class="number">1</span>;</span><br><span class="line">    dfs(s);</span><br><span class="line">    lca_pre(); </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y; i&lt;=m; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lca(x,y));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="在线算法-树剖"><a href="#在线算法-树剖" class="headerlink" title="-在线算法 树剖"></a><strong>-在线算法 树剖</strong></h4><p>时间复杂度<em>O(2n+mlogn)</em>，且常数较小，<del>似乎</del>比倍增快好多</p>
+<p>主要思想：两次<em>dfs</em>进行预处理，将树分为若干条不相交的轻重链，<br>每次求LCA（x,y）时判断两点是否在同一链上<br>若是则我们只要找到这两点中深度较小的点输出<br>如果两点不在同一条链上<br>那就找到深度较大的点令它等于它所在的重链链端的父节点即为x=f[top[x]]<br>直到两点到达同一条链上，输出两点中深度较小的点</p>
+<blockquote>
+<p>各数组意义：</p>
+<ul>
+<li>size[u]  保存以u为根的子树节点个数</li>
+<li>top[u]   保存当前节点所在链的顶端节点（轻儿子的 top 为他自己）</li>
+<li>son[u]   保存重儿子（重儿子：对于每个结点 u，其重儿子为其子结点中 size 值最大的结点，其余子结点为轻儿子）</li>
+<li>dep[u]   保存结点u的深度值</li>
+<li>fa[u]    保存结点u的父亲节点</li>
+</ul>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch; ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch)) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> to[<span class="number">1100000</span>],nxt[<span class="number">1100000</span>],head[<span class="number">510000</span>],cnt;</span><br><span class="line"><span class="keyword">int</span> n,m,s,dep[<span class="number">500005</span>],size[<span class="number">500005</span>],son[<span class="number">500005</span>],top[<span class="number">500005</span>],fa[<span class="number">500005</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v,nxt[cnt]=head[u],head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> ff)</span></span>&#123;    <span class="comment">//第一次dfs求出各点dep,fa,size,son </span></span><br><span class="line">    dep[u]=dep[ff]+<span class="number">1</span>;</span><br><span class="line">    fa[u]=ff;</span><br><span class="line">    size[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v==ff) <span class="keyword">continue</span>;</span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        size[u]+=size[v];</span><br><span class="line">        <span class="keyword">if</span>(!son[u]||size[v]&gt;size[son[u]]) son[u]=v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> topp)</span></span>&#123;  <span class="comment">//第二次dfs求出各点top </span></span><br><span class="line">    top[u]=topp;</span><br><span class="line">    <span class="keyword">if</span>(son[u]) dfs2(son[u],topp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v!=son[u]&amp;&amp;v!=fa[u]) dfs2(v,v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;    <span class="comment">//求LCA时，不断将top较深的点跳至其 top 的父节点，直到两个结点在同一条重链上 </span></span><br><span class="line">    <span class="keyword">while</span>(top[x]!=top[y])</span><br><span class="line">        <span class="keyword">if</span>(dep[top[x]]&gt;=dep[top[y]]) x=fa[top[x]];</span><br><span class="line">            <span class="keyword">else</span> y=fa[top[y]];</span><br><span class="line">    <span class="keyword">return</span> dep[x]&lt;dep[y]?x:y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;s);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;n;i++)</span><br><span class="line">        x=read(),y=read(),add(x,y),add(y,x);</span><br><span class="line">    dfs1(s,s);</span><br><span class="line">    dfs2(s,s);</span><br><span class="line">    <span class="keyword">int</span> a,b;    </span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        a=read(),b=read();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lca(a,b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T05:52:32.000Z" itemprop="dateUpdated">2018-10-21 13:52:32</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LCA，树剖/">LCA，树剖</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&title=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&title=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&source=洛谷 P3379 【模板】最近公共祖先（LCA）-概念及定义 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/01/xuexibijichengfaniyuan/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】乘法逆元</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/01/xuexibijifeixuantreap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【学习笔记】非旋Treap</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&title=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&title=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&source=洛谷 P3379 【模板】最近公共祖先（LCA）-概念及定义 最近公共祖先简称LCA（Lowest Common Ancestor），所谓LCA，是当给定..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】最近公共祖先(LCA)》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/01/xuexibijizuijingonggongzuxianlca/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aO47jQAwFQN//0rvpAIakx08bCkqRobFbXQqaHJKfT3z9+3N93//+fPXb73XyNa/WX7jw8PDwBlu/30SCvFr/6vP9c+/XiX6Lh4eHd4xX3dZk61ffvH+VeRDCw8PDezOvmvgmr6AaYPDw8PDez9tKsqvfwcPDw3sbLy+2VksGeTG3Gn6Way14eHh4tRpp1EV6z+cj/T08PDy8cVe9euDmTax8yGC0Wzw8PLwDvPzATZLg6vk8eXrhm3h4eHgHeElhNC8W5AWFXmvtSK0aDw8PL+blTaZqmjsv7y6UJPDw8PCO8fKDuDo0UGVPQlH0vwIeHh7emNdLiKu8KiNP9AuhAg8PD2+Jlw9X5al2704eGAo7xMPDw/sJrzd0NflrNY4lAanZN8PDw8MLeHlrvxcY8iGqeVqPh4eH9wZetdCQAPJeVR4GHnaCh4eHt8pLHp8f/fPhrXkQKhcj8PDw8Iq86pWXAHrt/14xIg8/eHh4eFu83zy+N8iVvNCHkgQeHh7eAV4+ULXb5u8NEPSKF3h4eHhbvF6banI/2dz9rwojYnh4eHgHeHmtItlQftBPRgGq9/Hw8PB2eb2hqK2DPk/Tmyk4Hh4e3jFeNVT0xrPyskUv1b4sRuDh4eGt8iblgGrpttpsq66Gh4eH90te9XCvDj9Nhgl67bdCFQQPDw9vwKsOXW2NQ82P/oen4OHh4R3jVQeb8tGrZna/deHh4eEdg+Vtp/z4nr+OQgC4qlLj4eHhrfImwWN+J4FVhxXWYiMeHh7eIPOsjlslDbNeyMmHFfDw8PB+w8s7R/njk+T7eGEFDw8P7wW8+6V71dReyIn2gIeHh/ca3glML0H/TN46Hh4e3oCXlwmSokB1Wwk13z8eHh7eaV6+RL6hHrs6XrBcw8DDw8N7vv4DuR67YHekzqIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

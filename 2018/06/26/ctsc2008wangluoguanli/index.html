@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/06/26/ctsc2008wangluoguanli/">
+    
+    
+    <title>[CTSC2008]网络管理 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="主席树,树剖">
+    <meta name="description" content="关键词：带修主席树  树链剖分  相关题目：$Luogu4175$ $BZOJ1146$">
+<meta name="keywords" content="主席树,树剖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CTSC2008]网络管理">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="关键词：带修主席树  树链剖分  相关题目：$Luogu4175$ $BZOJ1146$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-19T12:57:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[CTSC2008]网络管理">
+<meta name="twitter:description" content="关键词：带修主席树  树链剖分  相关题目：$Luogu4175$ $BZOJ1146$">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[CTSC2008]网络管理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[CTSC2008]网络管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-26T10:12:03.000Z" itemprop="datePublished" class="page-time">
+  2018-06-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一句话题意"><span class="post-toc-text">-一句话题意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思路"><span class="post-toc-text">-主要思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-CTSC2008-网络管理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[CTSC2008]网络管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-26 18:12:03" datetime="2018-06-26T10:12:03.000Z"  itemprop="datePublished">2018-06-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+关键词：带修主席树  树链剖分 <br>
+相关题目：<a href="https://www.luogu.org/problemnew/show/P4175" target="_blank" rel="noopener">$Luogu4175$</a> <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1146" target="_blank" rel="noopener">$BZOJ1146$</a>
+</div>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="-一句话题意"></a><strong>-一句话题意</strong></h4><p>给出一棵树节点数为$N$，每个点有一个权值，要求支持两种操作：<br> <span id="inline-toc">1.</span>求结点$u$与$v$之间路径上第$k$大的权值<br> <span id="inline-toc">2.</span>修改某一结点上的权值<br>共$Q$次操作<br>数据范围:$N,Q\leq 80000$,权值$\leq 10^8$。</p>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="-主要思路"></a><strong>-主要思路</strong></h4><p>对于一棵树上的路径进行操作首先我们可以想到<strong>树链剖分</strong><br>而树链剖分需要一个可以维护<strong>区间信息</strong>的数据结构来辅助<br>那么对于动态区间第$K$大显然可以使用<strong>带修主席树</strong>的方法</p>
+<p>我们首先将树进行剖分，<br>单点修改时修改每一棵包含点$u$的权值线段树<br>路径查询时先利用树链剖分将路径分割为多条$dfs$序连续的重链<br>这就是我们所要查询的区间了，对所有在<strong>树状数组意义下包含在这些区间里</strong>的权值线段树进行查询，就可以求出这条路径上的第$K$大了</p>
+<div class="note success">
+路径查询的具体实现
+<br>利用两个数组分别记录需要加上和减去的线段树的<strong>结点序号</strong>
+<br>每一次判断当前所处权值区间的右子区间的权值总个数是否大于我们所求的$K$
+<br>若大于等于则说明所求权值在右区间，向右区间查询
+<br>若小于则$k$-=$rsize$,向左区间查询
+<br>注意在向下层区间查询时<strong>将两个数组所存的结点序号更新</strong> 
+</div>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">90000</span>;</span><br><span class="line"><span class="keyword">int</span> to[N&lt;&lt;<span class="number">1</span>],nxt[N&lt;&lt;<span class="number">1</span>],head[N],cnt,a[N],root[N],n,q;</span><br><span class="line"><span class="keyword">int</span> id[N],val[N],dep[N],size[N],fa[N],top[N],son[N],dfn;</span><br><span class="line"><span class="keyword">int</span> l1,l2,q1[N],q2[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v;</span><br><span class="line">    nxt[cnt]=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> ff)</span></span>&#123;</span><br><span class="line">    dep[u]=dep[ff]+<span class="number">1</span>;</span><br><span class="line">    size[u]=<span class="number">1</span>;</span><br><span class="line">    fa[u]=ff;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v==ff) <span class="keyword">continue</span>;</span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        size[u]+=size[v];</span><br><span class="line">        <span class="keyword">if</span>(size[v]&gt;size[son[u]]) son[u]=v; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> topp)</span></span>&#123;</span><br><span class="line">    top[u]=topp;</span><br><span class="line">    id[u]=++dfn;</span><br><span class="line">    val[dfn]=a[u];</span><br><span class="line">    <span class="keyword">if</span>(son[u]) dfs2(son[u],topp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])</span><br><span class="line">        <span class="keyword">if</span>(to[i]!=fa[u]&amp;&amp;to[i]!=son[u]) dfs2(to[i],to[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;     </span><br><span class="line">    l1=l2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(top[x]!=top[y])&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[top[x]]&lt;dep[top[y]]) swap(x,y);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=id[top[x]]<span class="number">-1</span>;i&gt;<span class="number">0</span>;i-=i&amp;-i) q1[++l1]=root[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=id[x];i&gt;<span class="number">0</span>;i-=i&amp;-i) q2[++l2]=root[i];</span><br><span class="line">        x=fa[top[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&gt;dep[y]) swap(x,y);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=id[x]<span class="number">-1</span>;i&gt;<span class="number">0</span>;i-=i&amp;-i) q1[++l1]=root[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=id[y];i&gt;<span class="number">0</span>;i-=i&amp;-i) q2[++l2]=root[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//============================树链剖分===========================</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tot,size[N&lt;&lt;<span class="number">8</span>],lson[N&lt;&lt;<span class="number">8</span>],rson[N&lt;&lt;<span class="number">8</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> &amp;u,<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!u) u=++cnt;         </span><br><span class="line">        size[u]+=value;</span><br><span class="line">        <span class="keyword">if</span>(l==r) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(k&lt;=mid) ins(lson[u],k,l,mid,value);</span><br><span class="line">            <span class="keyword">else</span> ins(rson[u],k,mid+<span class="number">1</span>,r,value); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</span><br><span class="line">        <span class="keyword">int</span> rsize=<span class="number">0</span>,mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l1;i++) rsize-=size[rson[q1[i]]];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l2;i++) rsize+=size[rson[q2[i]]];</span><br><span class="line">            <span class="comment">//将所有有关权值线段树当前结点上的信息整合</span></span><br><span class="line">        <span class="keyword">if</span>(k&gt;rsize)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l1;i++) q1[i]=lson[q1[i]];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l2;i++) q2[i]=lson[q2[i]];</span><br><span class="line">            <span class="keyword">return</span> query(l,mid,k-rsize);</span><br><span class="line">                <span class="comment">//向左区间查找</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l1;i++) q1[i]=rson[q1[i]];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l2;i++) q2[i]=rson[q2[i]];</span><br><span class="line">            <span class="keyword">return</span> query(mid+<span class="number">1</span>,r,k);</span><br><span class="line">                <span class="comment">//向右区间查找</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br><span class="line"><span class="comment">//=============================带修主席树============================</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y),add(x,y),add(y,x); </span><br><span class="line">    dfs1(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=id[i];j&lt;=n;j+=j&amp;-j)</span><br><span class="line">            t.ins(root[j],val[id[i]],<span class="number">0</span>,<span class="number">1e8</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> k,x,y;</span><br><span class="line">    <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;k,&amp;x,&amp;y);</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=id[x];i&lt;=n;i+=i&amp;-i)</span><br><span class="line">                t.ins(root[i],val[id[x]],<span class="number">0</span>,<span class="number">1e8</span>,<span class="number">-1</span>),</span><br><span class="line">                t.ins(root[i],y,<span class="number">0</span>,<span class="number">1e8</span>,<span class="number">1</span>);</span><br><span class="line">            val[id[x]]=y;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            query(x,y);</span><br><span class="line">            <span class="keyword">int</span> tmp=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l1;i++) tmp-=t.size[q1[i]];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=l2;i++) tmp+=t.size[q2[i]];</span><br><span class="line">            <span class="keyword">if</span>(tmp&lt;k) &#123;<span class="built_in">puts</span>(<span class="string">"invalid request!"</span>);<span class="keyword">continue</span>;&#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,t.query(<span class="number">0</span>,<span class="number">1e8</span>,k));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS:我居然做完这道题才明白第$K$大和第$K$小的正确意义？！-_-</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-19T12:57:37.000Z" itemprop="dateUpdated">2018-10-19 20:57:37</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树剖/">树剖</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&title=《[CTSC2008]网络管理》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&title=《[CTSC2008]网络管理》 — 北咸's Blog&source=
+
+关键词：带修主席树  树链剖分 
+相关题目：$Luogu4175$ $BZOJ1146$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[CTSC2008]网络管理》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/28/2018hunanshengduijixuncircular/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[2018湖南省队集训]circular</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/25/cqoi2011dongtainixudui/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[CQOI2011]动态逆序对</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&title=《[CTSC2008]网络管理》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&title=《[CTSC2008]网络管理》 — 北咸's Blog&source=
+
+关键词：带修主席树  树链剖分 
+相关题目：$Luogu4175$ $BZOJ1146$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[CTSC2008]网络管理》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/26/ctsc2008wangluoguanli/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aQY6EMAwEQP7/afY8Wg3TtuFAUjmtVgxQHFqJ7eOI1/lvfbsmv/76V8cTCwMD47WM83J9e0D+0sl9kuf++DQYGBgbMJIozIN4EqP5czEwMDCq8ZpEZx7fGBgYGHcFbvU+38I64WFgYGD04jIP3HtDHAMDYzfG5GD59N+P9DcwMDBexTiLq3qfXjuz/FYYGBhLM6oH1GqTctKqzN8HAwNjN0Z+EL3ezF2/UPXO0WYRAwNjUUa1EN+LxUmDM2qCYmBgbMBIQjBpSfYGwpLg/tHCxMDA2JKRtx6rm8XkP/m28kfgYmBgLMGYHGWrRbRJ4BaamhgYGMsx5mWyUSl/0Fr4+BUGBsbSjLumre5CVreeGBgYezKea1tWhyp6R1wMDIz1GL0tXW8gI1/VVgQGBsYOjGrJvtqq7A1YjGZGMDAwFmJUj5Q5+67re5GNgYGxEmNyjJx8gny7GX0CDAyMpRnzA+Q84/Py3A3jFxgYGK9lJAMQTzQ45x8rag9gYGAsx6hu4JKD7mTUrIDHwMDYjFH9u1cm610fbQ0xMDAWYpzFlTx+0rCs3gEDA2MHRrUoNh+JmARxuXaIgYGxEKP6cvlhtdeSbAYuBgbGBox58FXxva3eqL+BgYGxDWMSwflgR3kgDAMDAyNuQFaHwBJ2UozDwMDYgTEp1ucHzuYrJp8PAwNjaUYvKJOCXT4w0dtQYmBgbMD4Ayf+2xl3V0SVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

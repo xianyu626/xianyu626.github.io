@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/01/xuexibijiaczidongji/">
+    
+    
+    <title>【学习笔记】AC自动机 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Trie树,字符串">
+    <meta name="description" content="Aho-Corasick AutomatonAC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fail。可以解决多个模式串在一个文本串中是否出现的问题。">
+<meta name="keywords" content="Trie树,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】AC自动机">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="Aho-Corasick AutomatonAC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fail。可以解决多个模式串在一个文本串中是否出现的问题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/05/01/CJJ0YV.png">
+<meta property="og:updated_time" content="2018-06-21T01:24:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】AC自动机">
+<meta name="twitter:description" content="Aho-Corasick AutomatonAC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fail。可以解决多个模式串在一个文本串中是否出现的问题。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/05/01/CJJ0YV.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】AC自动机</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】AC自动机</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-01T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Aho-Corasick-Automaton"><span class="post-toc-text">Aho-Corasick Automaton</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#洛谷-P3808-【模板】AC自动机（简单版）"><span class="post-toc-text">洛谷 P3808 【模板】AC自动机（简单版）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#洛谷-P3796-【模板】AC自动机（加强版"><span class="post-toc-text">洛谷 P3796 【模板】AC自动机（加强版)</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】AC自动机"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】AC自动机</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-01 09:00:00" datetime="2018-05-01T01:00:00.000Z"  itemprop="datePublished">2018-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Aho-Corasick-Automaton"><a href="#Aho-Corasick-Automaton" class="headerlink" title="Aho-Corasick Automaton"></a>Aho-Corasick Automaton</h2><p>AC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fail。可以解决多个模式串在一个文本串中是否出现的问题。<br><a id="more"></a>如下图，黑边为 Trie 树边，红边和蓝边为 fail 指针。<br><img src="https://s1.ax1x.com/2018/05/01/CJJ0YV.png" alt="此处输入图片的描述"><br>建立Trie-&gt;BFS建立Fail指针-&gt;文本串进行匹配<br><strong>Fail指针的建立</strong>：<strong>初始将根的子节点fail指向根</strong>并加入bfs队列，后续每个节点的fail都指向其父节点的fail的相同字母的子节点<br><strong>当某一字母不存在时</strong>，将其位置上的fail指针指向其父节点的fail的该字母的子节点</p>
+<h3 id="洛谷-P3808-【模板】AC自动机（简单版）"><a href="#洛谷-P3808-【模板】AC自动机（简单版）" class="headerlink" title="洛谷 P3808 【模板】AC自动机（简单版）"></a>洛谷 P3808 【模板】AC自动机（简单版）</h3><p>要求：给定 n 个模式串和 1 个文本串，求有多少个模式串在文本串里出现过</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXLEN = <span class="number">1000002</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> p[MAXLEN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Aho_Corasick_Automaton</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> trie[MAXLEN][<span class="number">26</span>],cnt[MAXLEN],fail[MAXLEN],cntt;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;   </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s),now=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> id=s[i]-<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">if</span>(!trie[now][id]) trie[now][id]=++cntt;</span><br><span class="line">            now=trie[now][id];</span><br><span class="line">        &#125;</span><br><span class="line">        cnt[now]++;</span><br><span class="line">    &#125;  <span class="comment">//建立 Trie </span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getfail</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++) <span class="keyword">if</span>(trie[<span class="number">0</span>][i]) fail[trie[<span class="number">0</span>][i]]=<span class="number">0</span>,q.push(trie[<span class="number">0</span>][i]);  <span class="comment">//将根的子结点fail指向根 </span></span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> u=q.front();q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">                <span class="keyword">if</span>(trie[u][i]) fail[trie[u][i]]=trie[fail[u]][i],q.push(trie[u][i]);  </span><br><span class="line">                        <span class="comment">// 子结点的fail指向当前结点的fail的当前位字母相同的子结点 </span></span><br><span class="line">                    <span class="keyword">else</span> trie[u][i] = trie[fail[u]][i];  <span class="comment">//若后续无所寻找字母，则将其指向当前结点的fail的所寻找字母的子结点 </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s),now=<span class="number">0</span>,res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> u=now;u&amp;&amp;cnt[u]!=<span class="number">-1</span>;u=fail[u]) res+=cnt[u],cnt[u]=<span class="number">-1</span>; <span class="comment">//每个模式串仅统计一次 </span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;AC;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%s"</span>,p),AC.insert(p);</span><br><span class="line">    AC.getfail();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,p), <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,AC.query(p));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="洛谷-P3796-【模板】AC自动机（加强版"><a href="#洛谷-P3796-【模板】AC自动机（加强版" class="headerlink" title="洛谷 P3796 【模板】AC自动机（加强版)"></a>洛谷 P3796 【模板】AC自动机（加强版)</h3><p>与简单版不同的是，需要找出出现次数最多的模式串<br>只需在匹配后不将模式串结尾指针赋-1即可<br>对每个模式串出现次数进行计数，最后找出最大次数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXLEN = <span class="number">1000002</span>;</span><br><span class="line"><span class="keyword">int</span> n,ans[<span class="number">200</span>];</span><br><span class="line"><span class="keyword">char</span> p[MAXLEN],s[<span class="number">200</span>][<span class="number">80</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Aho_Corasick_Automaton</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> trie[MAXLEN][<span class="number">26</span>],num[MAXLEN],fail[MAXLEN],cntt;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clean</span><span class="params">()</span></span>&#123;    <span class="comment">//初始化 </span></span><br><span class="line">        <span class="built_in">memset</span>(trie,<span class="number">0</span>,<span class="keyword">sizeof</span> trie);</span><br><span class="line">        <span class="built_in">memset</span>(num,<span class="number">0</span>,<span class="keyword">sizeof</span> num);</span><br><span class="line">        <span class="built_in">memset</span>(fail,<span class="number">0</span>,<span class="keyword">sizeof</span> fail);</span><br><span class="line">        cntt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) q.pop();</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *s,<span class="keyword">int</span> x)</span></span>&#123;  <span class="comment">//建立 Trie </span></span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s),now=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> id=s[i]-<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">if</span>(!trie[now][id]) trie[now][id]=++cntt;</span><br><span class="line">            now=trie[now][id];</span><br><span class="line">        &#125;</span><br><span class="line">        num[now]=x;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getfail</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++) <span class="keyword">if</span>(trie[<span class="number">0</span>][i]) fail[trie[<span class="number">0</span>][i]]=<span class="number">0</span>,q.push(trie[<span class="number">0</span>][i]);  <span class="comment">//将根的子结点fail指向根 </span></span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> u=q.front();q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)</span><br><span class="line">                <span class="keyword">if</span>(trie[u][i]) fail[trie[u][i]]=trie[fail[u]][i],q.push(trie[u][i]);  </span><br><span class="line">                        <span class="comment">// 子结点的fail指向当前结点的fail的当前位字母相同的子结点 </span></span><br><span class="line">                    <span class="keyword">else</span> trie[u][i] = trie[fail[u]][i];  <span class="comment">//若后续无所寻找字母，则将其指向当前结点的fail的所寻找字母的子结点 </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s),now=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">            now=trie[now][s[i]-<span class="string">'a'</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> u=now;u;u=fail[u]) ans[num[u]]++;  <span class="comment">//与简单版不同的是，相同字符串要重复计数 </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;AC;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span> ans);</span><br><span class="line">        AC.clean();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s[i]),AC.insert(s[i],i);</span><br><span class="line">        AC.getfail();</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,p);</span><br><span class="line">        AC.query(p);</span><br><span class="line">        <span class="keyword">int</span> anss=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            anss=max(anss,ans[i]);  <span class="comment">//找出出现最多的模式串的次数 </span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,anss);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)   </span><br><span class="line">            <span class="keyword">if</span>(ans[i]==anss) <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,s[i]); </span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-21T01:24:26.000Z" itemprop="dateUpdated">2018-06-21 09:24:26</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trie树/">Trie树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&title=《【学习笔记】AC自动机》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&title=《【学习笔记】AC自动机》 — 北咸's Blog&source=Aho-Corasick AutomatonAC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fa..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】AC自动机》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/01/xuexibijispfa/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】SPFA</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&title=《【学习笔记】AC自动机》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&title=《【学习笔记】AC自动机》 — 北咸's Blog&source=Aho-Corasick AutomatonAC 自动机可以理解为 Trie + KMP，即用多个模式串建立 Trie，然后用 BFS 求出失配指针 fa..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】AC自动机》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/01/xuexibijiaczidongji/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3aQZLjIAwF0L7/pTPbruox/hJkATxWqZRj87xQJKSfn3h9fq2/3z99/nv9052rv2ouDAyMbRmf4Xq6JqeOr6k+9/EpGBgYFzCSUDgOkcn1eeTM94aBgYGRbD0P2eOwi4GBgbGKkaR0+f1zHgYGBkYvXOYBdybFXFyLY2BgbMiYKSy//fkr/Q0MDIytGPPl6Phu1YZBc1cYGBhHM/IAV03+qq3K3ogGBgbGPYx8DKI6LvaNA7jy/BoGBsYRjN4x2dohsF6h+5//DQwMjOMY1WbhzMNmEtCXF4SBgXEBYxxeq0dgSWHcC9aPrwYDA+Noxkw3MAmR1Uq6V0hjYGDcwOgdxM+nfdUW5svOMTAwDmUkwbFauPZaktWjvZdaHAMD4yBGr4DMGfNFbLl8xcDAOJRRTdp65W515KJan2JgYJzKqB7lzyd8awcvCp1YDAyMbRkzaVw+nLFsfm1mYWBgbMsYB9yZcFxtJ/ReEwYGxg2MvKzNN9cL6Pmdm6eGGBgYmzOqoa03fpqMTYybAS9/AxgYGJcxkpBXLVNzQLXBgIGBcRsjf2QeIqstzObZGgYGxqGMT3FVS9zqoEavnYCBgXE2Y9WoRK9JUG1ILDjgw8DA2JbRG89Kwl/emBwnoNHdMDAwLmCsGqHIS99eqjfV38DAwLiSsYqXlKkvWS0GBgZGKxHsbT0fuVgQcDEwMLZi9JoB+a+SMJoPWGBgYNzG6JWO84/vBe6pRiYGBsZ+jH/mZbJQ5E9mGgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

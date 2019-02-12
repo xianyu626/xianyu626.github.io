@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/31/xuexibijibsgssuanfa/">
+    
+    
+    <title>【学习笔记】BSGS算法 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="分块,数论">
+    <meta name="description" content="慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)-写在前面（大致是瞎扯，赶时间直接跳吧） 今天又愉(ku)快(bi)地在BZOJ写题，碰见介个—&amp;gt;BZOJ 2242: [SDOI2011]计算器要求对于给定的 $y,z,p$ 满足三种操作:  求 $y^z \bmod p$ 的值 $xy\equiv z \pmod p$ $ y^x\equiv z \pmod">
+<meta name="keywords" content="分块,数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】BSGS算法">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)-写在前面（大致是瞎扯，赶时间直接跳吧） 今天又愉(ku)快(bi)地在BZOJ写题，碰见介个—&amp;gt;BZOJ 2242: [SDOI2011]计算器要求对于给定的 $y,z,p$ 满足三种操作:  求 $y^z \bmod p$ 的值 $xy\equiv z \pmod p$ $ y^x\equiv z \pmod">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-21T05:49:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】BSGS算法">
+<meta name="twitter:description" content="慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)-写在前面（大致是瞎扯，赶时间直接跳吧） 今天又愉(ku)快(bi)地在BZOJ写题，碰见介个—&amp;gt;BZOJ 2242: [SDOI2011]计算器要求对于给定的 $y,z,p$ 满足三种操作:  求 $y^z \bmod p$ 的值 $xy\equiv z \pmod p$ $ y^x\equiv z \pmod">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】BSGS算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】BSGS算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-31T12:51:47.000Z" itemprop="datePublished" class="page-time">
+  2018-05-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#慌张思考BSGS算法-模板题-POJ2417-Discrete-Logging"><span class="post-toc-text">慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写在前面（大致是瞎扯，赶时间直接跳吧）"><span class="post-toc-text">-写在前面（大致是瞎扯，赶时间直接跳吧）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念及定义"><span class="post-toc-text">-概念及定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思想"><span class="post-toc-text">-主要思想</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">-代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#扩展BSGS"><span class="post-toc-text">-扩展BSGS</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】BSGS算法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】BSGS算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-31 20:51:47" datetime="2018-05-31T12:51:47.000Z"  itemprop="datePublished">2018-05-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="慌张思考BSGS算法-模板题-POJ2417-Discrete-Logging"><a href="#慌张思考BSGS算法-模板题-POJ2417-Discrete-Logging" class="headerlink" title="慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)"></a>慌张思考<strong>BSGS算法</strong>(<a href="http://poj.org/problem?id=2417" target="_blank" rel="noopener">模板题 POJ2417 Discrete Logging</a>)</h3><h4 id="写在前面（大致是瞎扯，赶时间直接跳吧）"><a href="#写在前面（大致是瞎扯，赶时间直接跳吧）" class="headerlink" title="-写在前面（大致是瞎扯，赶时间直接跳吧）"></a><strong>-写在前面（<del>大致是瞎扯，赶时间直接跳吧</del>）</strong></h4><blockquote>
+<p>今天又愉(ku)快(bi)地在BZOJ写题，碰见介个—&gt;<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2242" target="_blank" rel="noopener">BZOJ 2242: [SDOI2011]计算器</a><br>要求对于给定的 $y,z,p$ 满足三种操作:</p>
+<ol>
+<li>求 $y^z \bmod p$ 的值</li>
+<li>$xy\equiv z \pmod p$</li>
+<li>$ y^x\equiv z \pmod p $<br>对于操作 2,3 求满足条件的最小$ x$</li>
+</ol>
+<p>操作1,2自然可以快速幂和费马小定理愉快的秒掉啦，但是操作3怎么办呢？<br>求助了一波机房大佬$ Zqlwmatt$（%%%%%）,似乎需要一个叫做<strong>BSGS</strong>（<del>拔山盖世</del>）算法的东西？？？<br>赶紧来学习一波~~~~</p>
+</blockquote>
+<p><del>我是不会说其实是因为太久没更新了强行更新一波才写的</del></p>
+<a id="more"></a>
+<h4 id="概念及定义"><a href="#概念及定义" class="headerlink" title="-概念及定义"></a><strong>-概念及定义</strong></h4><div class="note info">
+<p> 
+    <strong>bsgs（baby step giant step）算法</strong>用于解决求满足 $y^x\equiv z \pmod p$ 最小的 $x$ 值
+    <br>
+    时间复杂度为 $O(\sqrt{p})$
+    <br>
+    实质是利用<strong>分块</strong>的思想，将枚举$x$的复杂度降低
+    <br><br>
+
+</p>
+</div>
+<div class="note warning">这个算法只适用于 $p$ 为素数 且 $(y,p)$ 互质的情况</div>
+
+<h4 id="主要思想"><a href="#主要思想" class="headerlink" title="-主要思想"></a><strong>-主要思想</strong></h4><p>令 $m=\biggl\lceil\sqrt{p}\biggr\rceil$ ，即分块的大小<br>所求 <script type="math/tex">x=i*m-j</script><br>则原式就可以转化为 <script type="math/tex">y^{i*m-j}\equiv z \pmod p</script><br>移项得 <script type="math/tex">y^{i*m} \equiv z*y^j \pmod p</script><br>我们先枚举 $j$ (范围 $0$ ~ $m$ ) 求得 <script type="math/tex">z*y^j</script> 存入一个 <script type="math/tex">map</script> 中<br>再枚举 $i$（范围 $1$ ~ $m$ ）从 $map$ 中找出最小的 $i$ 满足 <script type="math/tex">y^{i*m}\equiv z*y^j \pmod p</script></p>
+<div class="note success">此时 $x=i*m-j$ 就是满足要求的最小 $x$ 
+<br>
+若在 $1$ ~ $m$ 的范围内无法找到符合条件的 $x$ 则表明没有符合条件的 $x$ 
+</div>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="-代码"></a><strong>-代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x,<span class="keyword">long</span> <span class="keyword">long</span> y,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) res=res*x%p;</span><br><span class="line">        x=x*x%p;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> p,a,b;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>,<span class="keyword">int</span>&gt;mp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;p,&amp;a,&amp;b)!=EOF)&#123;</span><br><span class="line">        mp.clear();</span><br><span class="line">        <span class="keyword">if</span>(a%p==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"no solution"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> flg=<span class="number">0</span>,m=(<span class="keyword">int</span>)<span class="built_in">sqrt</span>((<span class="keyword">double</span>)p)+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> now,t=fastpow(a,m,p);</span><br><span class="line">        now=b%p; mp[now]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            now=(now*a)%p;</span><br><span class="line">            mp[now]=j;</span><br><span class="line">        &#125;</span><br><span class="line">        now=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            now=now*t%p;</span><br><span class="line">            <span class="keyword">if</span>(mp[now])&#123;</span><br><span class="line">                flg=<span class="number">1</span>;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,((m*i-mp[now])%p+p)%p);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!flg) <span class="built_in">puts</span>(<span class="string">"no solution"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="扩展BSGS"><a href="#扩展BSGS" class="headerlink" title="-扩展BSGS"></a><strong>-扩展BSGS</strong></h4><p>似乎还有可以处理 $p$ 不是整数的情况的<strong>扩展BSGS算法</strong>??<br>学会了再更（逃逃逃逃逃）</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T05:49:17.000Z" itemprop="dateUpdated">2018-10-21 13:49:17</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分块/">分块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论/">数论</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&title=《【学习笔记】BSGS算法》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&title=《【学习笔记】BSGS算法》 — 北咸's Blog&source=慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)-写在前面（大致是瞎扯，赶时间直接跳吧）
+今天又愉(ku)快(bi)地在B..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】BSGS算法》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/01/xuexibijigaosixiaoyuan/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】高斯消元</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/25/xuexijihuabzoj/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【学习计划】BZOJ</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&title=《【学习笔记】BSGS算法》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&title=《【学习笔记】BSGS算法》 — 北咸's Blog&source=慌张思考BSGS算法(模板题 POJ2417 Discrete Logging)-写在前面（大致是瞎扯，赶时间直接跳吧）
+今天又愉(ku)快(bi)地在B..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】BSGS算法》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/31/xuexibijibsgssuanfa/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3awW7rMAwEQP//T+ddCwRpd6n4AZZGp6BOZI0OLCXyuuLxehs///7p8/v3P838/qvrjoGBgfFYxuvXkS8rf5qMfG0YGBjnMJJQ2LJ/n//T0+S3GBgYGMl0eXBMUsB2CzAwMDBmQbN4Zbk1GBgYGLNUb3bUbA/Jt5zFMTAwHsjIb93//+db6hsYGBiPYqxc1rdlzlkhM1oVBgbG1ow8wOXJ2Sy5bJstMDAwzmG0R9P8oi05yiazRTAMDIytGW2IzHkrF3PtGjAwME5jzADr4DYBLfYMAwPj4Yz2BfkrV5oz6qQTAwNja8asDWL29L6DNAYGxgmMWdhtWyKSa7tZEQIDA2NvxkpZsW2/+FbjRV3CxMDAeDhjlqINc89RUaH+LQYGxnaM9YJiMq5y5M0ZGBgYJzDagDtbRF4onW0iBgbGOYxZK8ZKsaGNlksDAwNjC0ZyoZYXMtujb54ORtkuBgbGAYxZy9d6pG83AgMD4xxGfmjML/fbXcwLqB83FAMD4wDG7JJrnd02xQ5P2xgYGFsw2rDYtpH9ES5H92l//N/AwMDYgvEqR37pvx7Eh0khBgbGdoyVi7BkutnF2S3NFhgYGA9nJEE2KTeuFCa/MBsGBsYBjPbAmSdq3031orM4BgbG8Yy8YSu/emvD+pVMh4GBgTEKmsnS2zInBgbGOYzkELvSNpEsPW+wwMDAOI0xOzquvz5PGb/WroGBgfE8xj+okSLgZ/I5WwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

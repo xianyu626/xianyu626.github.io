@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/02/xuexibijiwangluozuidaliu/">
+    
+    
+    <title>【学习笔记】网络最大流 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="图论,网络流">
+    <meta name="description" content="洛谷 P3376 【模板】网络最大流-概念及定义 设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量网络。求使 s -&amp;gt; t 流量最大的方案，并满足f(u,v) &amp;lt;= c(u,v) （f表示边(u,v)实际流量，c表示边（u,v)容量），s,t 外每个点的流出流量和流入流量相等">
+<meta name="keywords" content="图论,网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】网络最大流">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="洛谷 P3376 【模板】网络最大流-概念及定义 设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量网络。求使 s -&amp;gt; t 流量最大的方案，并满足f(u,v) &amp;lt;= c(u,v) （f表示边(u,v)实际流量，c表示边（u,v)容量），s,t 外每个点的流出流量和流入流量相等">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/05/02/CJHDZF.png">
+<meta property="og:updated_time" content="2018-07-27T12:15:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】网络最大流">
+<meta name="twitter:description" content="洛谷 P3376 【模板】网络最大流-概念及定义 设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量网络。求使 s -&amp;gt; t 流量最大的方案，并满足f(u,v) &amp;lt;= c(u,v) （f表示边(u,v)实际流量，c表示边（u,v)容量），s,t 外每个点的流出流量和流入流量相等">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/05/02/CJHDZF.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】网络最大流</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】网络最大流</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-02T02:19:15.000Z" itemprop="datePublished" class="page-time">
+  2018-05-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#洛谷-P3376-【模板】网络最大流"><span class="post-toc-text">洛谷 P3376 【模板】网络最大流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念及定义"><span class="post-toc-text">-概念及定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#【Dinic-算法】"><span class="post-toc-text">-【Dinic 算法】</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#【SAP算法】"><span class="post-toc-text">-【SAP算法】</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#主要思想：-Dinic-中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。"><span class="post-toc-text">主要思想： $Dinic$中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#优化："><span class="post-toc-text">优化：</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二分图最大匹配用最大流算法解决"><span class="post-toc-text">-二分图最大匹配用最大流算法解决</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】网络最大流"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】网络最大流</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-02 10:19:15" datetime="2018-05-02T02:19:15.000Z"  itemprop="datePublished">2018-05-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="洛谷-P3376-【模板】网络最大流"><a href="#洛谷-P3376-【模板】网络最大流" class="headerlink" title="洛谷 P3376 【模板】网络最大流"></a><a href="https://www.luogu.org/problemnew/show/P3376" target="_blank" rel="noopener">洛谷 P3376 【模板】网络最大流</a></h3><h4 id="概念及定义"><a href="#概念及定义" class="headerlink" title="-概念及定义"></a><strong>-概念及定义</strong></h4><blockquote>
+<p>设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量网络。求使 s -&gt; t 流量最大的方案，并满足f(u,v) &lt;= c(u,v) （f表示边(u,v)实际流量，c表示边（u,v)容量），s,t 外每个点的流出流量和流入流量相等</p>
+</blockquote>
+<a id="more"></a>
+<p>如下图即为一个容量网络与其最大流方案，（x,y） 表示边容量为 x，实际流量为 y。<br><img src="https://s1.ax1x.com/2018/05/02/CJHDZF.png" alt="此处输入图片的描述"></p>
+<hr>
+<h4 id="【Dinic-算法】"><a href="#【Dinic-算法】" class="headerlink" title="-【Dinic 算法】"></a><strong>-【Dinic 算法】</strong></h4><p>时间复杂度: 上界$O(V^2E)$，实际使用中一般更快<br>空间复杂度: $O(V+E)$<br><strong>主要思想：</strong></p>
+<ol>
+<li>输入零流图，建立残量网络。</li>
+<li>用 BFS 将残量网络分层，其中源点为第 1 层。</li>
+<li>用 DFS 在分层图中寻找增广路，确保路径上的点的层次递增。</li>
+<li>若存在增广路，则在 DFS 回溯时用增流更新残量网络，退出后将其计入总流量。</li>
+<li>重复过程2~4，直到在BFS中无法在残量网络中从源点到达汇点，则说明已经没有增广路。输出总流量，即为最大流。</li>
+</ol>
+<p><strong>优化：</strong>当前弧优化<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">ll cur[<span class="number">11000</span>],to[<span class="number">210000</span>],w[<span class="number">210000</span>],nxt[<span class="number">210000</span>],head[<span class="number">11000</span>],dep[<span class="number">11000</span>];</span><br><span class="line">ll n,m,s,t,cnt,maxflow;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">min</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;<span class="keyword">return</span> x&lt;y?x:y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    to[++cnt]=v,w[cnt]=c,nxt[cnt]=head[u],head[u]=cnt;</span><br><span class="line">    to[++cnt]=u,w[cnt]=<span class="number">0</span>,nxt[cnt]=head[v],head[v]=cnt;</span><br><span class="line">        <span class="comment">//建反向边，初始流为0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">queue</span>&lt;ll&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">bfs</span><span class="params">()</span> </span>&#123; <span class="comment">//在残量网络上构造分层图</span></span><br><span class="line">    <span class="built_in">memset</span>(dep,<span class="number">0</span>,<span class="keyword">sizeof</span> dep);</span><br><span class="line">    <span class="keyword">while</span>(q.size()) q.pop();<span class="comment">//清空队列</span></span><br><span class="line">    q.push(s); dep[s]=<span class="number">1</span>;    <span class="comment">//将源点入队</span></span><br><span class="line">    <span class="keyword">while</span>(q.size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> u=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i; i=nxt[i])</span><br><span class="line">            <span class="keyword">if</span>(w[i]&amp;&amp;!dep[to[i]]) &#123;</span><br><span class="line">                q.push(to[i]);</span><br><span class="line">                dep[to[i]]=dep[u]+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(to[i]==t) <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//到汇点直接退出</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//在当前残量网络下，无法从源点到达汇点了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">dinic</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> flow)</span> </span>&#123;<span class="comment">//在当前分层图上增广</span></span><br><span class="line">    <span class="keyword">if</span>(u==t) <span class="keyword">return</span> flow;</span><br><span class="line">    <span class="keyword">int</span> k,rest=flow;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=cur[u]; i&amp;&amp;rest; i=nxt[i])&#123;</span><br><span class="line">        cur[u]=i;       <span class="comment">//当前弧优化</span></span><br><span class="line">        <span class="keyword">if</span>(w[i]&amp;&amp;dep[to[i]]==dep[u]+<span class="number">1</span>) &#123;</span><br><span class="line">            k=dinic(to[i],min(rest,w[i]));</span><br><span class="line">            <span class="keyword">if</span>(!k) dep[to[i]]=<span class="number">0</span>; <span class="comment">//若当前节点无法继续增广，将其从分层图中删去</span></span><br><span class="line">            w[i]-=k;             <span class="comment">//在当前边减去流</span></span><br><span class="line">            w[i^<span class="number">1</span>]+=k;           <span class="comment">//在反向边加上流</span></span><br><span class="line">            rest-=k;             <span class="comment">//残余容量减去流</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cur[u]=head[u]; <span class="comment">//注意在当前点跑完后将其当前弧标记重置</span></span><br><span class="line">    <span class="keyword">return</span> flow-rest;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld"</span>,&amp;n,&amp;m,&amp;s,&amp;t);</span><br><span class="line">    cnt=<span class="number">1</span>;  <span class="comment">//cnt以1开始，使边的序号从2开始，方便之后的^运算找反向边序号</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y,z; i&lt;=m; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z),add(x,y,z);</span><br><span class="line">    <span class="keyword">int</span> flow=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cur[i]=head[i];</span><br><span class="line">    <span class="keyword">while</span>(bfs())    <span class="comment">//运行到无法在残量网络上从源点到汇点为止</span></span><br><span class="line">        <span class="keyword">while</span>(flow=dinic(s,<span class="number">2e9</span>)) maxflow+=flow;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,maxflow);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="【SAP算法】"><a href="#【SAP算法】" class="headerlink" title="-【SAP算法】"></a><strong>-【SAP算法】</strong></h4><p>时间复杂度：上界$O(V^2E)$，大部分情况下比$Dinic$快</p>
+<h5 id="主要思想：-Dinic-中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。"><a href="#主要思想：-Dinic-中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。" class="headerlink" title="主要思想： $Dinic$中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。"></a><strong>主要思想：</strong> $Dinic$中每次求分层图都要进行一次bfs，效率比较低下，因为每一次层次图的改动并不是非常大，我们可以考虑直接在dfs增广的时候修改分层图来优化求分层图的过程。</h5><blockquote>
+<p>感谢zyh巨爷提供的模板和lyc巨魔的讲解！(<del>略略略略略</del>~）</p>
+</blockquote>
+<h5 id="优化："><a href="#优化：" class="headerlink" title="优化："></a><strong>优化：</strong></h5><ul>
+<li>若深度标号出现了断层，那么显然无法继续增广。我们用一个count数组记录每个层次的结点有多少个，如果当前修改了最后一个某个层次的结点的深度标号，那么就出现了断层，可以结束运行了。</li>
+<li>当前弧优化：增广过程中，如果一个点的深度标号没有修改过，那么它已经遍历过的边不需要再遍历一次，用cur数组记录遍历到哪条边，下一次从这条边开始遍历。</li>
+<li>经过每个点后直接将其深度标号+1即可更新分层图。</li>
+<li>同Dinic中，如果实际流量已经达到残余容量了直接退出。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">ll n,m,s,t,cnt,ans;</span><br><span class="line">ll head[<span class="number">11000</span>],nxt[<span class="number">210000</span>],to[<span class="number">210000</span>],w[<span class="number">210000</span>],dep[<span class="number">11000</span>],cur[<span class="number">11000</span>],count[<span class="number">11000</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">min</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x&lt;y?x:y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(ll u,ll v,ll c)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v;</span><br><span class="line">    nxt[cnt]=head[u];</span><br><span class="line">    w[cnt]=c;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(ll u,ll maxflow)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (u==t) <span class="keyword">return</span> maxflow;</span><br><span class="line">    ll flow=<span class="number">0</span>;  <span class="comment">//记录实际流量</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=cur[u];i;i=nxt[i])&#123;</span><br><span class="line">        cur[u]=i;   <span class="comment">//当前弧优化</span></span><br><span class="line">        <span class="keyword">if</span> (w[i]&amp;&amp;dep[to[i]]+<span class="number">1</span>==dep[u])&#123; <span class="comment">//只有在分层图中处于点u下一层的点才会去尝试增广</span></span><br><span class="line">            ll now=dfs(to[i],min(w[i],maxflow-flow));   <span class="comment">//进行增广</span></span><br><span class="line">            flow+=now;</span><br><span class="line">            w[i]-=now;</span><br><span class="line">            w[i^<span class="number">1</span>]+=now;</span><br><span class="line">            <span class="keyword">if</span> (maxflow==flow) <span class="keyword">return</span> flow;</span><br><span class="line">                <span class="comment">//若实际流已经到达当前点的最大流，说明流量不会再增大，直接退出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cur[u]=head[u]; <span class="comment">//跑完该点后将其当前弧标记重置</span></span><br><span class="line">    <span class="keyword">if</span> (--count[dep[u]]==<span class="number">0</span>) dep[s]=n;</span><br><span class="line">        <span class="comment">//将该深度的点的数量-1，若分层图中出现断层，则标记退出</span></span><br><span class="line">    count[++dep[u]]++; <span class="comment">//将该点深度+1并更新深度计数</span></span><br><span class="line">    <span class="keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld"</span>,&amp;n,&amp;m,&amp;s,&amp;t);</span><br><span class="line">    cnt=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dep,<span class="number">0</span>,<span class="keyword">sizeof</span>(dep)); count[<span class="number">0</span>]=n;  <span class="comment">//初始化深度值，将深度为0的点的数量记为n</span></span><br><span class="line">    <span class="keyword">for</span>(ll i=<span class="number">1</span>,x,y,z;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">        add(x,y,z);</span><br><span class="line">        add(y,x,<span class="number">0</span>);     <span class="comment">//建立反向图</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(dep[s]&lt;n) <span class="comment">//直到获得退出标记</span></span><br><span class="line">        ans+=dfs(s,<span class="number">2e9</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="二分图最大匹配用最大流算法解决"><a href="#二分图最大匹配用最大流算法解决" class="headerlink" title="-二分图最大匹配用最大流算法解决"></a><strong>-二分图最大匹配用最大流算法解决</strong></h4><p><strong>主要思想：</strong></p>
+<ol>
+<li>在原二分图中增加一个源点s和一个汇点t</li>
+<li>源点s向集合X每个点连一条有向边，集合Y每个点向汇点t连一条有向边</li>
+<li>将原图的每条边改为从集合X向集合Y的有向边</li>
+<li>赋每条边的容量为1</li>
+<li>求源点到汇点的最大流即为最大匹配</li>
+</ol>
+<p><strong>优点：</strong><br>完了，不知道，无脑一点？</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-27T12:15:19.000Z" itemprop="dateUpdated">2018-07-27 20:15:19</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络流/">网络流</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&title=《【学习笔记】网络最大流》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&title=《【学习笔记】网络最大流》 — 北咸's Blog&source=洛谷 P3376 【模板】网络最大流-概念及定义
+设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】网络最大流》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/06/xuexibijikebingduizuopianshu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】可并堆（左偏树）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/01/xuexibijierfentuzuidapipeixiongyalisuanfa/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【学习笔记】二分图最大匹配(匈牙利算法)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&title=《【学习笔记】网络最大流》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&title=《【学习笔记】网络最大流》 — 北咸's Blog&source=洛谷 P3376 【模板】网络最大流-概念及定义
+设图G(V,E)为一个有向带权图，指定两个顶点分别为源点和汇点（s和t），边权即为每条边的容量，称为容量..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】网络最大流》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/02/xuexibijiwangluozuidaliu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3awW7EMAhF0fn/n07XVeXMfZCoMr5ZVdXY8ckCYeDzwc8Fnvvf3+/8d9XnjUeGDBnbMsjhUkZ/f75WhgwZ5zBIKLzfehU00zC6eu+XM8uQIUNGGARX/yFJoQwZMmT0GR3MageOlyFDxskMcqA0TSQX2n+4i8uQIWNDRudi+fbfr/Q3ZMiQsRXjCp901VMX2i9vkSFDxmgGD3C8HMaTy/u1/DwyZMg4gdEvqKUDXp0CXJDDypAhYwQjLWBxalr6r110lxmuDBkyBjHS8MeHJDqRkKySIUPGaQxSAkuHJ9ISW/oRZciQcQ6jU47nCR85bmsfGTJkHMAgRTFeCIuTudIH/bVKhgwZoxm8NE+Gt9I2QBqCg4aBDBkyBjHQuFXpKMVRibAJEfRaZciQsS2jM1rBhyRqIxfFjyhDhoyhDB5kecOSrOIpYDBsIUOGjKEM3rBEpa7SuEZwUH4DliFDxjgG35QPb70xihGkiTJkyBjHSDsJBNlpA6StUxkyZMxm1Mr0JH3kb+EX4+W7ZMiQcQCjFnzT8VN+0Li0J0OGjAMYteJap21ZK6UVc1sZMmRsy7jCp9YS6IfpILeVIUPGOEYa5tIW41NB/OE+rQwZMjZkdIIsv2p2mp2ozSlDhowDGOmFs5bM9VO9oDEgQ4YMGaXjdhJHNC0iQ4YMGfj3/Ch8BA1dYmXIkDGaQS6xDydz+O0kWMuQIWM2o38UPmxBDkHWFhuZMmTI2I/xA2JKiYduk5eMAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

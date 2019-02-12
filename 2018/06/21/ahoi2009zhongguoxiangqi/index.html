@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/06/21/ahoi2009zhongguoxiangqi/">
+    
+    
+    <title>[AHOI2009]中国象棋 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="状压DP">
+    <meta name="description" content="关键词：状压DP,动态规划 相关题目：$Luogu2051$ $BZOJ1801$">
+<meta name="keywords" content="状压DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[AHOI2009]中国象棋">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="关键词：状压DP,动态规划 相关题目：$Luogu2051$ $BZOJ1801$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-19T12:57:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[AHOI2009]中国象棋">
+<meta name="twitter:description" content="关键词：状压DP,动态规划 相关题目：$Luogu2051$ $BZOJ1801$">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[AHOI2009]中国象棋</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[AHOI2009]中国象棋</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-21T11:00:50.000Z" itemprop="datePublished" class="page-time">
+  2018-06-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一句话题意"><span class="post-toc-text">-一句话题意</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思路"><span class="post-toc-text">-主要思路</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-AHOI2009-中国象棋"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[AHOI2009]中国象棋</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-21 19:00:50" datetime="2018-06-21T11:00:50.000Z"  itemprop="datePublished">2018-06-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+关键词：状压DP,动态规划<br>
+相关题目：<a href="https://www.luogu.org/problemnew/show/P2051" target="_blank" rel="noopener">$Luogu2051$</a> <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1801" target="_blank" rel="noopener">$BZOJ1801$</a>
+</div>
+
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>Emmmm…其实这道题说是状压DP比较Fake，只是一个50分的做法，但正解可以从状压DP优化过来</p>
+</blockquote>
+<h4 id="一句话题意"><a href="#一句话题意" class="headerlink" title="-一句话题意"></a><strong>-一句话题意</strong></h4><p>给定一个N行M列的棋盘，求在上面放置中国象棋中的炮的<strong>方案数</strong>，要求任意的一对炮<strong>都不能相互攻击到</strong><br>方案数对$9999973$取模，可以不放炮，炮的数量没有限制<br>$N,M \leq 100$</p>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="-主要思路"></a><strong>-主要思路</strong></h4><p>分析一下可以发现，由于炮的攻击方法，任何一行或一列都最多只能有2个炮</p>
+<p>先讲50分的做法吧<br>50分的条件是$N,M$中有一个小于等于8<br>那么就可以考虑状压DP了，用<strong>三进制数</strong>记录每一列的象棋个数状态<br>定义$F[i][j]$表示放到第$i$行时象棋摆放状态为$j$的方案数<br>转移时枚举$i$和$j$即可<br>时间复杂度为$O(3^MN·M)$</p>
+<p>观察一哈，似乎我们其实并<strong>不需要知道每一列的具体状态</strong>？？！<br>我们需要的只是<strong>有一个棋子和没有棋子的列数</strong><br>对，正解来了<br>用$F[i][j][k]$记录放到第$i$行此时有$j$列有一个棋子，$k$列有两个棋子<br>转移的时候利用组合数乘一下就可以了<br>时间复杂度为$O(NM^2)$</p>
+<p>具体转移时考虑该行放几个棋子，以及放置在没有棋子的列和有一个棋子的列不同情况就可以了，具体在代码中注释了</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">9999973</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[<span class="number">110</span>][<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=m;j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=m-j;k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!f[i][j][k]) <span class="keyword">continue</span>;</span><br><span class="line">                f[i+<span class="number">1</span>][j][k]=(f[i+<span class="number">1</span>][j][k]+f[i][j][k])%mod; </span><br><span class="line">                    <span class="comment">//不放棋子</span></span><br><span class="line">                <span class="keyword">if</span>(j+k&lt;m) f[i+<span class="number">1</span>][j+<span class="number">1</span>][k]=(f[i+<span class="number">1</span>][j+<span class="number">1</span>][k]+f[i][j][k]*(m-j-k))%mod;</span><br><span class="line">                    <span class="comment">//放一个在没有棋子的列上</span></span><br><span class="line">                <span class="keyword">if</span>(j) f[i+<span class="number">1</span>][j<span class="number">-1</span>][k+<span class="number">1</span>]=(f[i+<span class="number">1</span>][j<span class="number">-1</span>][k+<span class="number">1</span>]+f[i][j][k]*j)%mod;</span><br><span class="line">                    <span class="comment">//放一个在有一个棋子的列上</span></span><br><span class="line">                <span class="keyword">if</span>(j+k+<span class="number">2</span>&lt;=m) f[i+<span class="number">1</span>][j+<span class="number">2</span>][k]=(f[i+<span class="number">1</span>][j+<span class="number">2</span>][k]+f[i][j][k]*(m-j-k)*(m-j-k<span class="number">-1</span>)/<span class="number">2</span>)%mod;</span><br><span class="line">                    <span class="comment">//放两个在没有棋子的列上</span></span><br><span class="line">                <span class="keyword">if</span>(j+k&lt;m&amp;&amp;j) f[i+<span class="number">1</span>][j][k+<span class="number">1</span>]=(f[i+<span class="number">1</span>][j][k+<span class="number">1</span>]+f[i][j][k]*(m-j-k)*j)%mod;</span><br><span class="line">                    <span class="comment">//放两个一个在没有棋子的列上，一个在有一个棋子的列上</span></span><br><span class="line">                <span class="keyword">if</span>(j&gt;=<span class="number">2</span>) f[i+<span class="number">1</span>][j<span class="number">-2</span>][k+<span class="number">2</span>]=(f[i+<span class="number">1</span>][j<span class="number">-2</span>][k+<span class="number">2</span>]+f[i][j][k]*j*(j<span class="number">-1</span>)/<span class="number">2</span>)%mod;</span><br><span class="line">                    <span class="comment">//放两个在有一个棋子的列上</span></span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=m-i;j++)</span><br><span class="line">            ans=(ans+f[n][i][j])%mod;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-19T12:57:17.000Z" itemprop="dateUpdated">2018-10-19 20:57:17</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状压DP/">状压DP</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&title=《[AHOI2009]中国象棋》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&title=《[AHOI2009]中国象棋》 — 北咸's Blog&source=
+
+关键词：状压DP,动态规划
+相关题目：$Luogu2051$ $BZOJ1801$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[AHOI2009]中国象棋》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/23/xuexibijizhuxishu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】主席树</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/21/cf280cgameontree/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CF280C Game on Tree</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&title=《[AHOI2009]中国象棋》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&title=《[AHOI2009]中国象棋》 — 北咸's Blog&source=
+
+关键词：状压DP,动态规划
+相关题目：$Luogu2051$ $BZOJ1801$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[AHOI2009]中国象棋》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/06/21/ahoi2009zhongguoxiangqi/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACN0lEQVR42u3aO3LDMAwFQN//0k6bIpYeQDozAldVJjIlrgsav9crvt6/rk///3330+evn5msWrowMDAey3hfXtfbze8mW8/v/kHFwMA4gPHpBLveyvXrk2M0YSerMDAwMK4P2fzovF6LgYGB8Y0Dt/qcahKLgYGBsRLq5fWuvDzXC0MxMDBOYORV9///+yv9DQwMjEcx3sUrKZNVk9sNu8LAwBjNyA+4fKhipVWQh30YGBjnMKrjEb3X5NtNvqbyzBoGBsbDGcm4Q7U9WW1zriS6N78bGBgYIxh5SyAvgSWbrq69OV0xMDCOYeSjYCvJbe9pN5/BwMAYzcgDuDzSrB7WCbWZkWNgYIxmrAR5eUJbHU0rB4gYGBgjGPlxmY9H9Ma8tpXbMDAwxjF6wxbJqio770h+XIuBgTGUkSSu1eblriCy8EVjYGCMZqyEbvmwV7Uw1yvzYWBgTGXkYxa9xDIv5PUC0Ffex8DAwHgsIz9SC0NaxdAzubsh2sXAwBjB6JF6W1kpzOVPxsDAmMSoltKSQltv2GKlwYmBgXECY1erIE+SN/wyVDNjDAyMhzNWymQraW1v4OMmNMTAwBjEWD9Sv9FTrTYkMDAwZjN6cVeviJ+3J3vtUgwMjNmM6hG5ju+FgDf7wcDAOICRH3y9l+0K9aLGAAYGxvGMXniXtwSSBurmCh8GBsZQxq4hsGpD4iaJxcDAGM1IktikPdBbFfVaMTAwDmb0Usd1arV3saEIiIGB8TzGD5kg+gg5F5kuAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/05/08/xuexibijishulianpoufen/">
+    
+    
+    <title>【学习笔记】树链剖分 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="树剖,线段树,高级数据结构">
+    <meta name="description" content="目前先把代码贴上来以后有时间再更？？？（逃逃逃逃逃）">
+<meta name="keywords" content="树剖,线段树,高级数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】树链剖分">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="目前先把代码贴上来以后有时间再更？？？（逃逃逃逃逃）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-21T05:52:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】树链剖分">
+<meta name="twitter:description" content="目前先把代码贴上来以后有时间再更？？？（逃逃逃逃逃）">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】树链剖分</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】树链剖分</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-08T02:34:07.000Z" itemprop="datePublished" class="page-time">
+  2018-05-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-【学习笔记】树链剖分"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】树链剖分</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-08 10:34:07" datetime="2018-05-08T02:34:07.000Z"  itemprop="datePublished">2018-05-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>目前先把代码贴上来<br>以后有时间再更？？？<br><del>（逃逃逃逃逃）</del><br><a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> val[<span class="number">110000</span>],dep[<span class="number">110000</span>],fa[<span class="number">110000</span>],size[<span class="number">110000</span>],son[<span class="number">110000</span>],id[<span class="number">110000</span>],top[<span class="number">110000</span>],newval[<span class="number">110000</span>],dfn;</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">110000</span>],to[<span class="number">210000</span>],nxt[<span class="number">210000</span>],cnt;</span><br><span class="line"><span class="keyword">int</span> n,m,s,p;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">segtree</span>&#123;</span> <span class="comment">//线段树 </span></span><br><span class="line">    <span class="keyword">int</span> lazy[<span class="number">410000</span>],sum[<span class="number">410000</span>],l[<span class="number">410000</span>],r[<span class="number">410000</span>];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> ll,<span class="keyword">int</span> rr)</span></span>&#123;</span><br><span class="line">        l[k]=ll,r[k]=rr,lazy[k]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(ll==rr)&#123;</span><br><span class="line">            sum[k]=newval[ll];</span><br><span class="line">            <span class="keyword">if</span>(sum[k]&gt;=p) sum[k]%=p;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid=ll+rr&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        build(k&lt;&lt;<span class="number">1</span>,ll,mid);</span><br><span class="line">        build(k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,rr);</span><br><span class="line">        sum[k]=sum[k&lt;&lt;<span class="number">1</span>]+sum[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(sum[k]&gt;=p) sum[k]%=p;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!lazy[k]) <span class="keyword">return</span>;</span><br><span class="line">        sum[k&lt;&lt;<span class="number">1</span>]+=lazy[k]*(r[k&lt;&lt;<span class="number">1</span>]-l[k&lt;&lt;<span class="number">1</span>]+<span class="number">1</span>);</span><br><span class="line">        sum[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+=lazy[k]*(r[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]-l[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(sum[k&lt;&lt;<span class="number">1</span>]&gt;=p) sum[k&lt;&lt;<span class="number">1</span>]%=p;</span><br><span class="line">        <span class="keyword">if</span>(sum[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]&gt;=p) sum[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]%=p;</span><br><span class="line">        lazy[k&lt;&lt;<span class="number">1</span>]=(lazy[k&lt;&lt;<span class="number">1</span>]+lazy[k])%p;</span><br><span class="line">        lazy[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=(lazy[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]+lazy[k])%p;</span><br><span class="line">        lazy[k]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l[k]==x&amp;&amp;r[k]==y) <span class="keyword">return</span> sum[k];</span><br><span class="line">        pushdown(k);</span><br><span class="line">        <span class="keyword">int</span> mid=l[k]+r[k]&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;mid) <span class="keyword">return</span> query(k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,x,y);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(y&gt;mid) <span class="keyword">return</span> (query(k&lt;&lt;<span class="number">1</span>,x,mid)+query(k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,y))%p;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> query(k&lt;&lt;<span class="number">1</span>,x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l[k]&gt;=x&amp;&amp;r[k]&lt;=y)&#123;</span><br><span class="line">            lazy[k]+=val;</span><br><span class="line">            <span class="keyword">if</span>(lazy[k]&gt;=p) lazy[k]%=p;</span><br><span class="line">            sum[k]=sum[k]+val*(r[k]-l[k]+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(sum[k]&gt;=p) sum[k]%=p;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pushdown(k);</span><br><span class="line">        <span class="keyword">int</span> mid=l[k]+r[k]&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;mid) update(k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,x,y,val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(y&gt;mid) update(k&lt;&lt;<span class="number">1</span>,x,mid,val),update(k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,y,val);</span><br><span class="line">        <span class="keyword">else</span> update(k&lt;&lt;<span class="number">1</span>,x,y,val);</span><br><span class="line">        sum[k]=sum[k&lt;&lt;<span class="number">1</span>]+sum[k&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(sum[k]&gt;=p) sum[k]%=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;sgt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v,nxt[cnt]=head[u],head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> ff)</span></span>&#123;</span><br><span class="line">    dep[u]=dep[ff]+<span class="number">1</span>;</span><br><span class="line">    size[u]=<span class="number">1</span>;</span><br><span class="line">    fa[u]=ff;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v==ff) <span class="keyword">continue</span>;</span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        size[u]+=size[v];</span><br><span class="line">        <span class="keyword">if</span>(!son[u]||size[v]&gt;size[son[u]]) son[u]=v; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> topp)</span></span>&#123;</span><br><span class="line">    top[u]=topp;</span><br><span class="line">    id[u]=++dfn;</span><br><span class="line">    newval[dfn]=val[u];</span><br><span class="line">    <span class="keyword">if</span>(son[u]) dfs2(son[u],topp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v!=fa[u]&amp;&amp;v!=son[u]) dfs2(v,v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pathchange</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val)</span></span>&#123;<span class="comment">//路径修改 </span></span><br><span class="line">    <span class="keyword">while</span>(top[x]!=top[y])</span><br><span class="line">        <span class="keyword">if</span>(dep[top[x]]&gt;=dep[top[y]]) sgt.update(<span class="number">1</span>,id[top[x]],id[x],val),x=fa[top[x]];</span><br><span class="line">            <span class="keyword">else</span> sgt.update(<span class="number">1</span>,id[top[y]],id[y],val),y=fa[top[y]];</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&lt;=dep[y]) sgt.update(<span class="number">1</span>,id[x],id[y],val);</span><br><span class="line">        <span class="keyword">else</span> sgt.update(<span class="number">1</span>,id[y],id[x],val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">pathquery</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;          <span class="comment">//路径查询 </span></span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(top[x]!=top[y])&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[top[x]]&gt;=dep[top[y]]) res+=sgt.query(<span class="number">1</span>,id[top[x]],id[x]),x=fa[top[x]];</span><br><span class="line">            <span class="keyword">else</span> res+=sgt.query(<span class="number">1</span>,id[top[y]],id[y]),y=fa[top[y]];</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=p) res%=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&lt;=dep[y]) res+=sgt.query(<span class="number">1</span>,id[x],id[y]);</span><br><span class="line">        <span class="keyword">else</span> res+=sgt.query(<span class="number">1</span>,id[y],id[x]);</span><br><span class="line">    <span class="keyword">if</span>(res&gt;=p) res%=p;  </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">treechange</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> val)</span></span>&#123;      <span class="comment">//子树修改 </span></span><br><span class="line">    sgt.update(<span class="number">1</span>,id[u],id[u]+size[u]<span class="number">-1</span>,val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">treequery</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;                <span class="comment">//子树查询 </span></span><br><span class="line">    <span class="keyword">return</span> sgt.query(<span class="number">1</span>,id[u],id[u]+size[u]<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;s,&amp;p);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y),add(x,y),add(y,x);</span><br><span class="line">    dfs1(s,s);</span><br><span class="line">    dfs2(s,s);      <span class="comment">//两次dfs将树进行轻重链剖分 </span></span><br><span class="line">    sgt.build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">int</span> type,x,y,z;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;type);</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z),pathchange(x,y,z);</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="number">2</span>) <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y),<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,pathquery(x,y));</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="number">3</span>) <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y),treechange(x,y);</span><br><span class="line">        <span class="keyword">if</span>(type==<span class="number">4</span>) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x),<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,treequery(x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T05:52:11.000Z" itemprop="dateUpdated">2018-10-21 13:52:11</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树剖/">树剖</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树/">线段树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高级数据结构/">高级数据结构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&title=《【学习笔记】树链剖分》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&title=《【学习笔记】树链剖分》 — 北咸's Blog&source=目前先把代码贴上来以后有时间再更？？？（逃逃逃逃逃）" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】树链剖分》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/08/xuexibijishuzhuangshuzu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【学习笔记】树状数组</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/06/xuexibijikebingduizuopianshu/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【学习笔记】可并堆（左偏树）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&title=《【学习笔记】树链剖分》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&title=《【学习笔记】树链剖分》 — 北咸's Blog&source=目前先把代码贴上来以后有时间再更？？？（逃逃逃逃逃）" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】树链剖分》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/05/08/xuexibijishulianpoufen/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW7jMBAEwPz/0851Dyuhe2gFEFk6BbEksnxoDzn8+Ymvz8X176dX9ydvbp8aXhgYGK9lfG6vqwHuGe0oybhX92BgYJzDSKIwicjkP20E39+DgYGBkdyTF4sJFQMDA+NbjHwSV4HbFqAYGBgYsw21ZLp5QP/RWhwDA+OFjJWF5dN/P9LfwMDAeBVjtlk/ayckbxvOCgMDY2vGrAG5EqPtsjafDwYGxgmMJFLbkrGd7lL7EwMDY1NGvqHWrhmfOHB2+RQGBsbxjJWSbhbZ+VMYGBjnMPJW4mw3vg30+qvBwMDYmpE/lgdldISr3NQrjllgYGBsx2gXlnmk5lHetjD/8xQGBsbWjJWjpc8d88pLVQwMjBMY7RKx3ggry9D7ML0cHQMDY2vGbLG6EpRt4NaRjYGBcQCj3TjLp5vHdH3YAgMDY2tGG7J5U/PpZsPSbwUGBsbLGfUuXVzSfesoxuVvBQYGxqaMlam0n7ZL3zbEMTAw9mbMNsXaYm72ab6sxcDAOIeRH8aaBfHKEbSozsXAwNiakTcsh8OUDdG6wYCBgbEp41Ne+XZ//ob8yOxSUYiBgfFaxizm8lck0bzSQK0xGBgYr2XkIZu3P1eKyOEcMDAwDmC0C8726Fj7NbVxjIGBgTFbsrZty2TESzAGBgbGbSCuF5SzIxdfCFwMDIxXMVa28le2ydqYxsDAOJMxWzomZd9sEsmzw0YmBgbG+xi/Z4JgvlEORWAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

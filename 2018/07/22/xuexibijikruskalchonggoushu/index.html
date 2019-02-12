@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/07/22/xuexibijikruskalchonggoushu/">
+    
+    
+    <title>【学习笔记】Kruskal重构树 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kruskal重构树">
+    <meta name="description" content="最基本的用途就是维护连通图中路径权值的最值问题 相关题目：$【BZOJ3732】Network$">
+<meta name="keywords" content="Kruskal重构树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】Kruskal重构树">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="最基本的用途就是维护连通图中路径权值的最值问题 相关题目：$【BZOJ3732】Network$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/07/22/PGmXEn.png">
+<meta property="og:updated_time" content="2018-10-19T12:56:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【学习笔记】Kruskal重构树">
+<meta name="twitter:description" content="最基本的用途就是维护连通图中路径权值的最值问题 相关题目：$【BZOJ3732】Network$">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/07/22/PGmXEn.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【学习笔记】Kruskal重构树</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【学习笔记】Kruskal重构树</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-22T02:05:58.000Z" itemprop="datePublished" class="page-time">
+  2018-07-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要思想"><span class="post-toc-text">-主要思想</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-【学习笔记】Kruskal重构树"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【学习笔记】Kruskal重构树</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-22 10:05:58" datetime="2018-07-22T02:05:58.000Z"  itemprop="datePublished">2018-07-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<div class="note info">
+最基本的用途就是维护<strong>连通图中路径权值的最值</strong>问题<br>
+相关题目：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3732" target="_blank" rel="noopener">$【BZOJ3732】Network$</a>
+</div>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="主要思想"><a href="#主要思想" class="headerlink" title="-主要思想"></a><strong>-主要思想</strong></h4><p>本来对于一个连通图中的路径最值，我们采用的是建立最小生成树，<br>然后对两点在最小生成树中的路径暴力求最值或者用树剖加线段树的方法</p>
+<p>但是这样要么慢，要么实现起来比较麻烦<br>这时候可以用到一种叫<strong>Kruskal重构树</strong>的算法</p>
+<p>实现方式是在Kruskal连边时不直接连边，而是新建一个<strong>点权为该边边权</strong>的结点<br>将这条边的两个端点的整颗子树连到该节点上作为儿子，<br>各个子树的根用<strong>并查集</strong>维护一下就可以了</p>
+<p>这样建出来的树具有一些性质：<br><span id="inline-toc">1.</span> 是一个大根堆（因为Kruskal连边时边权由小到大）<br><span id="inline-toc">2.</span> 原树和新树两点间路径上的边权/点权最大值相等<br>然后把性质1，2综合起来我们可以得到：<strong>原树上两点间边权最大值等于新树上两点的lca的点权</strong></p>
+<p>利用这个性质就可以很方便的求<strong>路径最值</strong>了</p>
+<p>下面是示意图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s1.ax1x.com/2018/07/22/PGmXEn.png" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure></p>
+<div class="note warning">
+注意在新树中的圆点中的数字表示原树中的点的编号，<strong>它们是没有点权的</strong><br>
+而方点代表的就是<strong>新建的点</strong>，其中的数字表示的是其点权
+</div>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><span id="inline-green">代码</span></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">31000</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span><span class="keyword">int</span> u,v,w;&#125;e[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> node &amp;x,<span class="keyword">const</span> node &amp;y)</span></span>&#123;<span class="keyword">return</span> x.w&lt;y.w;&#125;</span><br><span class="line"><span class="keyword">int</span> n,m,k,fa[N],to[N&lt;&lt;<span class="number">1</span>],nxt[N&lt;&lt;<span class="number">1</span>],head[N],cnt,val[N],tot;</span><br><span class="line"><span class="keyword">int</span> size[N],son[N],dep[N],top[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    to[++cnt]=v,nxt[cnt]=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> fa[x]==x?x:fa[x]=getf(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> ff)</span></span>&#123;</span><br><span class="line">    size[u]=<span class="number">1</span>;</span><br><span class="line">    dep[u]=dep[ff]+<span class="number">1</span>;</span><br><span class="line">    fa[u]=ff;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=to[i];</span><br><span class="line">        <span class="keyword">if</span>(v==ff) <span class="keyword">continue</span>;</span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        size[u]+=size[v];</span><br><span class="line">        <span class="keyword">if</span>(size[v]&gt;size[son[u]]) son[u]=v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> topp)</span></span>&#123;</span><br><span class="line">    top[u]=topp;</span><br><span class="line">    <span class="keyword">if</span>(son[u]) dfs2(son[u],topp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nxt[i])</span><br><span class="line">        <span class="keyword">if</span>(to[i]!=fa[u]&amp;&amp;to[i]!=son[u]) dfs2(to[i],to[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(top[u]!=top[v])&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[top[u]]&lt;dep[top[v]]) swap(u,v);</span><br><span class="line">        u=fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dep[u]&gt;dep[v]) swap(u,v);</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;e[i].u,&amp;e[i].v,&amp;e[i].w);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n<span class="number">-1</span>;i++) fa[i]=i;</span><br><span class="line">    tot=n;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+m+<span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> fx=getf(e[i].u),fy=getf(e[i].v);</span><br><span class="line">        <span class="keyword">if</span>(fx==fy) <span class="keyword">continue</span>;</span><br><span class="line">        val[++tot]=e[i].w;</span><br><span class="line">        add(tot,fx),add(tot,fy);</span><br><span class="line">        fa[fx]=fa[fy]=tot;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs1(tot,<span class="number">0</span>),dfs2(tot,tot);</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">    <span class="keyword">while</span>(k--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,val[lca(x,y)]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-19T12:56:24.000Z" itemprop="dateUpdated">2018-10-19 20:56:24</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kruskal重构树/">Kruskal重构树</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&title=《【学习笔记】Kruskal重构树》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&title=《【学习笔记】Kruskal重构树》 — 北咸's Blog&source=
+
+最基本的用途就是维护连通图中路径权值的最值问题
+相关题目：$【BZOJ3732】Network$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】Kruskal重构树》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/25/noi2018guicheng/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[NOI2018]归程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/20/wangluoliu24ticanjinjihuawenti/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【网络流24题】餐巾计划问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&title=《【学习笔记】Kruskal重构树》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&title=《【学习笔记】Kruskal重构树》 — 北咸's Blog&source=
+
+最基本的用途就是维护连通图中路径权值的最值问题
+相关题目：$【BZOJ3732】Network$
+
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【学习笔记】Kruskal重构树》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/07/22/xuexibijikruskalchonggoushu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7jQAwEwPz/08l1gY3l7qGo9QKlk+FYEmsCcAhyvr7i6/vy+vM3f39+9bTrX16/6+YLDw8Pbzn0VyHmQVzfmyxZEjMeHh7eNi9P39ehXC/Edd5Onp/HjIeHh/dpvLyaTb5PMHh4eHj/I++sjE4w1yX+QxsDHh4eXslLmgLtN8kynZFWei14eHh4Ma8tjj/h88p8Dw8PD288Vb9OuO1W0ab7djP45V14eHh4C7zJgaqzkdjZ3nXWzsDDw8Pb450dGkhefJb020Nd9SLi4eHhDXj5DU8eyWrHYy/jxMPDw/tHvCTEPNx8zJYsxBsLHh4e3gIvH+2fTZfahu/ZoYToZAQeHh7eTby2FE7aEHkJnhTNeU/l5XwPDw8Pb5k3aQdcg9vGR/K0N4uLh4eHt8A7wySNg7Ycbw9pFW/Ew8PDu5W3vRlsHAsotjQ8PDy8x3lJ6p8MsdrUX28keHh4eAu8Nvm2SXze6p28HQ8PD2+D16bv5K/tppI/sz4QhoeHh7fAaxsNeZPirkTfLvGb/yEeHh7emJcDkoWYtDPa5YjmXHh4eHiP8JItIQ93Amhje1lM4+Hh4a3xomFSeVe7MSSDrqKsx8PDw1vgtQdAz1oPeRmdN5dvODqAh4eHN+AVSTYIvS2X2y3krGGBh4eHdy8vT+7fN13JYp0dJqhPcuHh4eENeJOBU7sckxK5bnDg4eHhrfHadNye7Wqbs2cx4OHh4W3zJqXwWfnbjs0m2wYeHh7eBi+/2uF9e5DrrGk7fwseHh7eGS/ZDIrxfDD+P1uIPDY8PDy8Z3j5+L9t/rbN3Lw0j5YVDw8P74N5eSmcp/VJ2wIPDw/vc3hnKX6yWKMY8PDw8NZ4eTOi3R6i9D246+Y2Lh4eHt6tA7AkWecLlwy32qYGHh4e3jLvB0slor+uizlrAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

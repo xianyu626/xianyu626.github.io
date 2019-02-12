@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="true/2018/10/21/cf1072jilutie/">
+    
+    
+    <title>CF1072记录贴 | 北咸&#39;s Blog | There is an Artificial Idiot...  &lt;/br&gt; 现已兹瓷新域名 blog.southe3n.cf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="DP,贪心">
+    <meta name="description" content="这场CF打完心态有点崩…记录一下 （T2卡一小时 ， T3 FST了解一下？）">
+<meta name="keywords" content="DP,贪心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF1072记录贴">
+<meta property="og:url" content="http://blog.southe3n.cf/2018/10/21/cf1072jilutie/index.html">
+<meta property="og:site_name" content="北咸&#39;s Blog">
+<meta property="og:description" content="这场CF打完心态有点崩…记录一下 （T2卡一小时 ， T3 FST了解一下？）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.southe3n.cf/img/cf1072d.png">
+<meta property="og:updated_time" content="2018-10-21T23:50:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF1072记录贴">
+<meta name="twitter:description" content="这场CF打完心态有点崩…记录一下 （T2卡一小时 ， T3 FST了解一下？）">
+<meta name="twitter:image" content="http://blog.southe3n.cf/img/cf1072d.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北咸&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/ACU.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">北咸</h5>
+          <a href="mailto:qxq22255090@hotmail.com" title="qxq22255090@hotmail.com" class="mail">qxq22255090@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-users"></i>
+                友链
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CF1072记录贴</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CF1072记录贴</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-21T12:40:36.000Z" itemprop="datePublished" class="page-time">
+  2018-10-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Codeforces/">Codeforces</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#T2"><span class="post-toc-text">T2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#T3"><span class="post-toc-text">T3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#T4"><span class="post-toc-text">T4</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在最后"><span class="post-toc-text">写在最后</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-CF1072记录贴"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CF1072记录贴</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-21 20:40:36" datetime="2018-10-21T12:40:36.000Z"  itemprop="datePublished">2018-10-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Codeforces/">Codeforces</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>这场CF打完心态有点崩…记录一下</p>
+<p><code>（T2卡一小时 ， T3 FST了解一下？）</code></p>
+</blockquote>
+<a id="more"></a>
+<p><a href="http://codeforces.com/contest/1072" target="_blank" rel="noopener">先扔个比赛链接</a></p>
+<p>T1不管</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><p><strong>Description</strong></p>
+<p>T2题意是给两个长度为 $n-1(n\leq 10^5)$ 的数列 $a,b$ ，<strong>值域 $0$~$3$</strong></p>
+<p>要求构造一个数列 $t$ 满足：</p>
+<ul>
+<li><p>$a[i]=t[i]|t[i+1]$</p>
+</li>
+<li><p>$b[i]=t[i]\&amp;t[i+1]$</p>
+</li>
+</ul>
+<p>若无解则输出$NO$</p>
+<p><strong>Solution</strong></p>
+<p>其实是一个挺简单的DP，<strong>注意值域只有两位二进制</strong></p>
+<p>$f[i][j]$ 表示 $t$ 数组填到第 $i$ 个且 $t_i=j$ 是否可行，然后在转移的时候记录是从哪里转移过来的就好了。输出时从最后一位倒着找回去。</p>
+<p><strong>Code</strong> </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">101000</span>],b[<span class="number">101000</span>],f[<span class="number">101000</span>][<span class="number">10</span>],fa[<span class="number">101000</span>][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> ans[<span class="number">101000</span>],res;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>]=f[<span class="number">1</span>][<span class="number">1</span>]=f[<span class="number">1</span>][<span class="number">2</span>]=f[<span class="number">1</span>][<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">3</span>;j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=<span class="number">3</span>;k++)</span><br><span class="line">                <span class="keyword">if</span>((a[i<span class="number">-1</span>]==(j|k))&amp;&amp;(b[i<span class="number">-1</span>]==(j&amp;k))) </span><br><span class="line">                    <span class="keyword">if</span>(f[i<span class="number">-1</span>][k]) f[i][j]=<span class="number">1</span>,fa[i][j]=k;</span><br><span class="line">    res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!f[n][res]&amp;&amp;res&lt;=<span class="number">3</span>) res++;</span><br><span class="line">    <span class="keyword">if</span>(res==<span class="number">4</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>),<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i;i--)</span><br><span class="line">        ans[i]=res,res=fa[i][res];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><p><strong>Description</strong></p>
+<p>给两个数 $a,b\le 10^9$ 要求构造两个数列，使其和分别<strong>小于等于</strong> $a,b$ 且数列中的数两两不相同</p>
+<p>使两数列<strong>长度和最大</strong>，给出方案</p>
+<p><strong>Solution</strong></p>
+<p>贪心一下，先将  $a+b$ 拆成 $1+2+…+x$ + $y(x&lt;y)$的形式</p>
+<p>后用贪心地思想先将 $a$ 填完，再用剩下的数去填 $b$ </p>
+<p><strong>Attention：$b$ 是有可能填不满的！！</strong></p>
+<blockquote>
+<p>代码写的太乱，就不贴了</p>
+</blockquote>
+<h2 id="T4"><a href="#T4" class="headerlink" title="T4"></a>T4</h2><p><strong>Description</strong></p>
+<p>给出一个 $n·n(n\leq 2000)$ 的字母矩阵，从 $(1,1)$ 走到 $(n,n)$ ，只能向下或向右走，有 $k$ 次机会将一个格子上的字母改成 <code>&#39;a&#39;</code> </p>
+<p>求一种走法使得路径所经过的字母串的<strong>字典序最小</strong></p>
+<p><strong>Input</strong></p>
+<pre>
+4 2
+abcd
+bcde
+bcad
+bcde
+</pre>
+
+<pre>
+5 3
+bwwwz
+hrhdh
+sepsp
+sqfaf
+ajbvw
+</pre>
+
+
+<p><strong>Output</strong></p>
+<pre>aaabcde</pre>
+
+<pre>aaaepfafw</pre>
+
+<p><strong>Solution</strong></p>
+<p>首先因为是字典序，所以改前面比改后面优秀，先DP求出所有能在改 $k$ 次及以内走到的点使得路径上全部都是<code>&#39;a&#39;</code></p>
+<p>如下图，黑色的格子是改 $k$ 次能走到的最远的点</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\cf1072d.png" alt="1" title="">
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+<p>显然，<strong>在红线以前的格子一定不是最优的</strong>，所以我们从红线上的黑格子开始<strong>平行于对角线</strong>向 $(n,n)$ 推进，以到<strong>当前斜线为止答案最优的点向右和下拓展</strong>，打上标记，然后从下一条斜线打了标记的点中选出字母最小的点继续进行标记。</p>
+<p><strong>Code</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,K,line,f[<span class="number">2010</span>][<span class="number">2010</span>];</span><br><span class="line"><span class="keyword">int</span> able[<span class="number">2010</span>][<span class="number">2010</span>];  <span class="comment">//标记前面的路径是最优的</span></span><br><span class="line"><span class="keyword">char</span> g[<span class="number">2010</span>][<span class="number">2010</span>];</span><br><span class="line"><span class="built_in">string</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;K);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,g[i]+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">memset</span>(f,<span class="number">0x3f</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            f[i][j]=min(f[i<span class="number">-1</span>][j],f[i][j<span class="number">-1</span>])+(g[i][j]!=<span class="string">'a'</span>);</span><br><span class="line">        <span class="comment">//求出到每个点的最小更改次数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(f[i][j]&lt;=K)&#123;</span><br><span class="line">                line=max(i+j<span class="number">-1</span>,line); <span class="comment">//找到最远的一条斜线</span></span><br><span class="line">                able[i+<span class="number">1</span>][j]=able[i][j+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=line;i++) ans+=<span class="string">'a'</span>;</span><br><span class="line">    able[<span class="number">1</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    line++;</span><br><span class="line">    <span class="keyword">int</span> nowmin;</span><br><span class="line">    <span class="keyword">while</span>(line&lt;n*<span class="number">2</span>)&#123;</span><br><span class="line">        nowmin=<span class="number">1e9</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j;i&lt;=n;i++)&#123;</span><br><span class="line">            j=line-i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;<span class="number">1</span>||j&gt;n) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(able[i][j]) nowmin=min(nowmin,(<span class="keyword">int</span>)g[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        ans+=nowmin; <span class="comment">//找出每条斜线中的最小合法字母，计入答案</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j;i&lt;=n;i++)&#123;</span><br><span class="line">            j=line-i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;<span class="number">0</span>||j&gt;n) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(nowmin==g[i][j]&amp;&amp;able[i][j]) able[i+<span class="number">1</span>][j]=able[i][j+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        line++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><blockquote>
+<p>T2刚看到没注意到值域只有两位二进制想了半天，看到了之后又想着贪心构造，一点都没想着要DP，菜菜菜</p>
+<p>T3听同学讲的题意，不知道拆出来数列和可以不等于那个数，就挂了。。</p>
+<p>T4最后二十多分钟其实应该要码的出来的，还是挂了，心有点乱</p>
+<p>心态真的是个大问题，见的题也少，T2显然的DP愣是没看出来，后面心态就崩了</p>
+<p><strong>总而言之，菜是原罪</strong></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-21T23:50:52.000Z" itemprop="dateUpdated">2018-10-22 07:50:52</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.southe3n.cf">
+            <img src="/img/avatar.jpg" alt="北咸">
+            北咸
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&title=《CF1072记录贴》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&title=《CF1072记录贴》 — 北咸's Blog&source=
+这场CF打完心态有点崩…记录一下
+（T2卡一小时 ， T3 FST了解一下？）
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CF1072记录贴》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/04/cf1060eshangxiadp/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CF1060E [上下DP]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "1Ya3GFYLfUGzgL7S113cABvD-gzGzoHsz",
+            appKey: "UiTLEJsU3isv39WUo2JGxqtz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>北咸 &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&title=《CF1072记录贴》 — 北咸's Blog&pic=http://blog.southe3n.cf/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&title=《CF1072记录贴》 — 北咸's Blog&source=
+这场CF打完心态有点崩…记录一下
+（T2卡一小时 ， T3 FST了解一下？）
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CF1072记录贴》 — 北咸's Blog&url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/&via=http://blog.southe3n.cf" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.southe3n.cf/2018/10/21/cf1072jilutie/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS5LCMAxFUfa/6bAAKs59UhhYvhl1Ncb4MBD6+PPBz/Xz3L1K1v++926flx8ZMmRsy7iWz/qgaww/KPnch69GhgwZBzBIKCQRrx9GyefKkCFDBjlWLTdLU0kZMmTI6DB4SOVHlCFDhow1gxSxZD1ptJH9/1iLy5AhY0NGp7D8999/mW/IkCFjK0YndJIBAG+3XY1HhgwZsxlp0/+txhnfLTiPDBkyhjLSJhpP5kgRy4vbB5gMGTJGMzqpGwnWJBDzlQ88GTJkDGWkgE4zrkZFIVuGDBkHMPgW6fULUrLy4H77qgwZMkYzSAmaXud6qzCO23AyZMgYzUjTsv762ggTte1kyJAxjsGX8hCcBtzamOHhzogMGTIGMXhwTJtu6YChlrDGQ00ZMmRsyKgVnPw/nSsXwRckQ4aM0YxaUdqpmPutuocfABkyZIxj8MtY6RiydpmsGGplyJAxmpE27nmRyRNH/oUG2a4MGTLGMfrJWZpQ8sSxldvKkCFjHIMHu06o7aeAt/vIkCHjAEan6V+7YMEbcOi9MmTIOIDB22e1MWRtTcCTIUPGUMYVPrXB5Hp9pyWHZqoyZMjYnNGZDKZXK9ZJHt8h3U2GDBkzGLw0TXm1tlo65pQhQ8Y5jE7o5OOEdPDJkTJkyJCRHi4dLbwQrGXIkCGjdJR0tMBbey//bsiQIWMTRi10ptfF+GCSv0uGDBknMHjpSNphaUMtzfFag0wZMmTsx/gCBKTRPzJIqA0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(っ·Д·)っ页面崩溃了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>
