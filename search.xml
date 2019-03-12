@@ -140,7 +140,7 @@
   <entry>
     <title><![CDATA[【学习计划】网络流24题]]></title>
     <url>%2F2018%2F07%2F17%2Fxuexijihuawangluoliu24ti%2F</url>
-    <content type="text"><![CDATA[Emmmm... 可能要做一做网络流24题？？ 我怎么感觉不看题解我一道都做不出来啊喂？！ 数学建模能力极差 下面放一放链接 飞行员配对方案问题收支平衡问题【CTSC1999】家园餐巾计划问题太空飞行计划]]></content>
+    <content type="text"><![CDATA[Emmmm... 可能要做一做网络流24题？？ 我怎么感觉不看题解我一道都做不出来啊喂？！ 数学建模能力极差 下面放一放链接 飞行员配对方案问题负载平衡问题【CTSC1999】家园餐巾计划问题太空飞行计划]]></content>
       <categories>
         <category>日常</category>
       </categories>
@@ -499,8 +499,8 @@
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
